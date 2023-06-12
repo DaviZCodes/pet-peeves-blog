@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function Login() {
+
+    useEffect(() =>{
+        document.title = "Login!"
+    }, [])
+
     return (
         <div className="login">
-            Login
+            <h1>Login</h1>
         </div>
     );
 }

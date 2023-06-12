@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function Register() {
+    useEffect(() => {
+        document.title = "Register!"
+    }, [])
+
     return (
         <div className="register">
-            Register
+            <h1>Register</h1>
         </div>
     );
 }

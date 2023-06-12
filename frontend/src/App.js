@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import About from './components/About';
 import Login from './components/Login';
 import Register from './components/Register';
+import Post from './components/Post';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
           <Route path="/about" element = {<About/>} />
           <Route path="/login" element = {<Login/>} />
           <Route path="/register" element = {<Register/>} />
+          <Route path="/post" element = {<Post/>} />
         </Routes>
       </header>
     </div>

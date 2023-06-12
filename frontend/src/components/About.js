@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function About() {
+
+    //change tab title
+    useEffect(() => {
+        document.title = "Who are we?";
+    }, [])
+
     return (
         <div className="about">
-            About
+            <h1>Who are we?</h1>
         </div>
     );
 }
