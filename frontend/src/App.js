@@ -1,10 +1,10 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import Home from './components/Home';
-import About from './components/About';
-import Login from './components/Login';
-import Register from './components/Register';
-import Post from './components/Post';
+import Home from './components/Home/Home';
+import About from './components/About/About';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Post from './components/Post/Post';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
