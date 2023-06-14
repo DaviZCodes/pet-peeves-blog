@@ -1,0 +1,45 @@
+#cat-gif {
+    max-width: 250px;
+    cursor: pointer;
+    animation: fade-in 3s;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0.03;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+h2 {
+    margin-top: 30px;
+    text-decoration: underline;
+    text-decoration-thickness: 7.3px;
+    text-decoration-color: rgb(243, 166, 24);
+}
+
+#intro {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#info {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#copyright {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    min-height: 20vh;
+    font-size: 12px;
+}
+
+#do-not-pet {
+    color: red;
+    position: absolute;
+    font-weight: bold;
+    right: 200px;
+    bottom: 10px;
+}
