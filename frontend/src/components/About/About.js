@@ -33,7 +33,7 @@ function About() {
             <h1>Who are we?</h1>
             </header>
             <subhead>
-            <h2>Pet Peeves is a place for everyone.</h2>
+            <h2>Pet Peeves is a place for&nbsp;<div className="everyone">everyone</div>.</h2>
             </subhead>
             <body>
             <p id = "intro">Feel free to share everything about your pet. Ask questions to pet experts. 

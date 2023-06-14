@@ -20,7 +20,7 @@ h1 {
     min-height: 500px;
     max-width: 500px;
     padding: 30px;
-    background: linear-gradient(to right, rgba(42, 177, 35, 0.5), rgba(50, 50, 224, 0.5));
+    background: linear-gradient(to right, rgba(30, 132, 25, 0.5), rgba(39, 39, 172, 0.5));
 }
 
 @media (max-width: 800px) {
@@ -35,13 +35,16 @@ h1 {
     }
   }
 
-#register {
+#register2 {
+    display: flex;
     font-size: 30px;
-    text-shadow: 2px black;
-    -webkit-text-stroke: 0.2px black;
+    text-shadow: 3px black;
+    transform: translateY(30px);
 }
 
 #question {
+    display: flex;
+    transform: translateY(30px);
     font-size: 20px;
     color: black;
 }

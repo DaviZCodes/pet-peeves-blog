@@ -18,7 +18,7 @@ function Login() {
             <Link to = "/register" id = "register">
             <h3 id = "question">Don't have an account?</h3>
             </Link>
-            <Link to = "/register" id = "register"> Register </Link>
+            <Link to = "/register" id = "register2"> Register </Link>
             </div>
         </div>
     );
