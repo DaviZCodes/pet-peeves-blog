@@ -12,7 +12,7 @@ function Register() {
             <h1>Register</h1>
             Create a Username: <input type="text" id = "create-username"></input>
             <br></br>
-            Choose a Password: <input type="text" id = "create-password"></input>
+            Choose a Password: <input type="password" id = "create-password"></input>
             </div>
         </div>
     );

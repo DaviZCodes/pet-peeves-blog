@@ -14,7 +14,7 @@ function Login() {
             <h1>Login</h1>
             Username: <input type="text" id = "username"></input>
             <br></br>
-            Password: <input type="text" id = "password"></input>
+            Password: <input type="password" id = "password"></input>
             <Link to = "/register" id = "register">
             <h3 id = "question">Don't have an account?</h3>
             </Link>
