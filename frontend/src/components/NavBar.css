@@ -21,6 +21,7 @@ header a{
     text-decoration: none;
     font-size: clamp(15px, 4.3vw, 30px);
     font-weight: bold;
+    text-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);
 }
 
 .header a:visited{

@@ -39,7 +39,13 @@ h1 {
     display: flex;
     font-size: 30px;
     text-shadow: 3px black;
-    transform: translateY(30px);
+    position: relative;
+    top: 25px;
+    transition: transform 1s;
+}
+
+#register2:hover{
+    transform: scale(1.06);
 }
 
 #question {
