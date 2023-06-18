@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import "./Post.css"
 
 function Post() {
 
