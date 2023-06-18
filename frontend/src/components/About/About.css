@@ -1,3 +1,7 @@
+.about {
+    text-align: center;
+}
+
 #cat-gif {
     max-width: 250px;
     cursor: pointer;
