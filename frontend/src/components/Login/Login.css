@@ -16,24 +16,29 @@ h1 {
     justify-content: center;
     border: 2px solid black;
     border-radius: 6px;
-    min-width: 800px;
-    min-height: 500px;
-    max-width: 500px;
+    width: 800px;
+    height: 500px;
     padding: 30px;
     background: linear-gradient(to right, rgba(30, 132, 25, 0.5), rgba(39, 39, 172, 0.5));
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 950px) {
     .container {
-      max-width: 500px;
+      max-width: 600px;
     }
-  }
-  
-  @media (max-width: 500px) {
+}
+
+@media (max-width: 750px) {
     .container {
-        max-width: 200px;
+    max-width: 500px;
     }
-  }
+} */
+
+@media (max-width: 350px) {
+    .container {
+    max-height: 450px;
+    }
+}
 
 #register2 {
     display: flex;

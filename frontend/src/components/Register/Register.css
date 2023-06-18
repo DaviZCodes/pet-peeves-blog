@@ -12,9 +12,8 @@
     justify-content: center;
     border: 2px solid black;
     border-radius: 6px;
-    min-width: 800px;
-    min-height: 500px;
-    max-width: 500px;
+    width: 800px;
+    height: 500px;
     padding: 30px;
     background: linear-gradient(to right, rgba(62, 177, 56, 0.5), rgba(205, 161, 40, 0.5));
 }
@@ -34,4 +33,10 @@
 
 #join-now:hover{
     transform: scale(1.06);
+}
+
+@media (max-width: 350px) {
+    .register-container {
+    max-height: 450px;
+    }
 }
