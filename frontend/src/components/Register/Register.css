@@ -18,6 +18,29 @@
     background: linear-gradient(to right, rgba(62, 177, 56, 0.5), rgba(205, 161, 40, 0.5));
 }
 
+.register-container form {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-container form label,
+.register-container form input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    transition: transform 1s;
+}
+
+.register-container form input:hover {
+    transform: scale(1.03);
+}
+
+
+
 #join-now {
     margin-top: 20px;
     padding: 10px;

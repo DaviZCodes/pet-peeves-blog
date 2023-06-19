@@ -22,6 +22,28 @@ h1 {
     background: linear-gradient(to right, rgba(30, 132, 25, 0.5), rgba(39, 39, 172, 0.5));
 }
 
+.container form {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container form label,
+.container form input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-width: 1px;
+    transition: transform 1s;
+}
+
+.container form input:hover {
+    transform: scale(1.03);
+}
+
+
 /* @media (max-width: 950px) {
     .container {
       max-width: 600px;
@@ -50,6 +72,23 @@ h1 {
 }
 
 #register2:hover{
+    transform: scale(1.06);
+}
+
+#submit {
+    margin-top: 20px;
+    padding: 10px;
+    min-width: 150px;
+    border-radius: 6px;
+    border-width: 1px;
+    font-size: 15px;
+    color: rgb(243, 166, 24);
+    cursor: pointer;
+    transition: transform 1s;
+    font-weight: bold;
+}
+
+#submit:hover{
     transform: scale(1.06);
 }
 

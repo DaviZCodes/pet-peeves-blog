@@ -21,7 +21,7 @@ h2 {
     display: inline-flex;
     margin-top: 30px;
     position: relative;
-
+    font-size: clamp(16px, 5.3vw, 24px);
     animation: fade-out 6s;
 }
 
@@ -53,14 +53,17 @@ h2::after {
     text-decoration-thickness: 6px;
     text-underline-offset: 5px;
     text-decoration-color: rgb(243, 166, 24);
+    font-size: clamp(16px, 5.3vw, 24px);
 }
 
 #intro {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: clamp(12px, 2.3vw, 16px);
 }
 
 #info {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: clamp(12px, 2.3vw, 16px);
 }
 
 #copyright {
