@@ -34,8 +34,8 @@ function Login() {
             <div className="container">
             <h1>Login</h1>
             <form action="POST">
-                Username: <input type="username" id = "username" placeholder="username" onChange={(element) => {setUsername(element.target.value);}}></input>
-                Password: <input type="password" id = "password" placeholder="password" onChange={(element) => {setPassword(element.target.value);}}></input>
+                <input type="username" id = "username" placeholder="username" onChange={(element) => {setUsername(element.target.value);}}></input>
+                <input type="password" id = "password" placeholder="password" onChange={(element) => {setPassword(element.target.value);}}></input>
                 <input type="submit" onClick={submit} id = "submit"></input>
             </form>
         

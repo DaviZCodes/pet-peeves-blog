@@ -12,7 +12,7 @@ function Register() {
         element.preventDefault();
 
         try {
-            await axios.post("http://localhost:3000/", {
+            await axios.post("http://localhost:5000/", {
                 username, password
             })
         }
@@ -32,8 +32,8 @@ function Register() {
             <div className="register-container">
             <h1>Register</h1>
             <form action="POST">
-                Username: <input type="username" id = "username" placeholder="username" onChange={(element) => {setUsername(element.target.value);}}></input>
-                Password: <input type="password" id = "password" placeholder="password" onChange={(element) => {setPassword(element.target.value);}}></input>
+                <input type="username" id = "username" placeholder="username" value = {username} onChange={(element) => {setUsername(element.target.value);}}></input>
+                <input type="password" id = "password" placeholder="password" value = {password} onChange={(element) => {setPassword(element.target.value);}}></input>
                 <button id = "join-now" onClick={submit}> Join Now </button>
             </form>
             </div>
