@@ -1,6 +1,41 @@
 import express, {Request, Response} from "express";
-import {createUser } from "../db/users";
+import {createUser, getUserByUsername } from "../db/users";
 import { authentication, random } from "../helpers";
+
+export const login = async(req: Request, res: Response) => {
+    try {
+        const {username, password} = req.body;
+
+        if (!password || !username) {
+            return res.sendStatus(400);
+        }
+
+        const user = await getUserByUsername(username).select("+authentication.salt +authentication.password");
+        
+        if (!user) {
+            return res.sendStatus(400);
+        }
+
+        const expectedHash = authentication(user.authentication.salt, password);
+
+        if (user.authentication?.password !== expectedHash){
+            return res.sendStatus(403);
+        }
+
+        const salt = random();
+        user.authentication.sessionToken = authentication(salt, user._id.toString());
+        await user.save();
+
+        res.cookie("PETLOGGER-AUTH", user.authentication.sessionToken, {domain: "localhost", path: "/"})
+
+    }
+
+    //if error creating a user
+    catch(error) {
+        console.log(error);
+        return res.sendStatus(400);
+    }
+}
 
 export const register = async(req: Request, res: Response) => {
     try {
