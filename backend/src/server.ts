@@ -1,36 +1,38 @@
-import express, {Request, 
-    Response, 
-    NextFunction, 
-    Application, ErrorRequestHandler} from "express";
+import express from "express";
+import http from "http";
+import bodyparser from "body-parser";
+import cookieParser from "cookie-parser";
+import compression from "compression";
 import cors from "cors";
-import {Server} from "http"
-import createHttpError from "http-errors";
+import router from "./router";
+import mongoose from "mongoose";
 
-const app: Application = express();
-app.use(cors());
+//setting up the app
+const app = express();
+app.use(cors({
+    credentials: true,
+}));
 
-app.get("/", (req: Request, res: Response, next: NextFunction) => {
-    res.send("Pet Logger Backend")
+app.use(compression());
+app.use(cookieParser());
+app.use(bodyparser.json());
+
+
+//running the server
+const server = http.createServer(app);
+
+const PORT = 8080;
+server.listen(PORT, () => {
+    console.log(`Pet Logger Backend at ${PORT}`);
 })
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-    next(new createHttpError.NotFound())
+//username: davi, password: davi
+const MONGO_URL = "mongodb+srv://davi:davi@petlogger.fl6e10i.mongodb.net/?retryWrites=true&w=majority";
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGO_URL);
+mongoose.connection.on("error", (error: Error) => {
+    console.log(error)  
 })
 
-//error handling
-const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
-    res.status(err.status || 500);
-    res.send( {
-        status: err.status || 500,
-        message: err.message
-    })
-}
-
-app.use(errorHandler);
-
-//run server
-const PORT: Number = 1001;
-
-const server: Server = app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-});
+app.use("/", router());

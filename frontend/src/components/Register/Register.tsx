@@ -12,9 +12,10 @@ function Register() {
         element.preventDefault();
 
         try {
-            await axios.post("http://localhost:5000/", {
+            await axios.post("http://localhost:8080/register", {
                 username, password
             })
+            console.log("Successfully registered!")
         }
 
         catch (error) {

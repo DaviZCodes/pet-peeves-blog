@@ -39,6 +39,11 @@ h1 {
     transition: transform 1s;
 }
 
+#username, #password {
+    height: 20px;
+}
+
+
 .container form input:hover {
     transform: scale(1.03);
 }

@@ -35,6 +35,10 @@
     transition: transform 1s;
 }
 
+.register-container form input {
+    height: 20px;
+}
+
 .register-container form input:hover {
     transform: scale(1.03);
 }
