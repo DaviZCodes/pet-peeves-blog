@@ -43,8 +43,6 @@
     transform: scale(1.03);
 }
 
-
-
 #join-now {
     margin-top: 20px;
     padding: 10px;
@@ -66,4 +64,8 @@
     .register-container {
     max-height: 450px;
     }
+}
+
+#cannotRegister {
+    color: red;
 }
