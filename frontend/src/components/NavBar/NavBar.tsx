@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import catLogo from "./images/cat logo.png"
 import {Link, useNavigate} from "react-router-dom";  
 import axios from 'axios';
 import './NavBar.css';
@@ -33,7 +34,7 @@ function NavBar() {
     return (
         <div className="NavBar">
             <header>
-                <Link to = "/"> Pet Peeves! </Link>
+            <Link to = "/"> Pet Peeves! </Link>
             </header>
             {/*<img src = {catImage} id = "cat" alt = "Cat"></img>*/}
             <nav className="links">
