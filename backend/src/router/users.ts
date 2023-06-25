@@ -6,4 +6,4 @@ export default (router: Router) => {
     router.get("/users", isAuthenticated, getAllUsers);
     router.delete("/users/:id", isOwner, deleteUser);
     router.patch("/users/:id", isAuthenticated, isOwner, updateUser);
-}
+}       
