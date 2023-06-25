@@ -23,7 +23,7 @@ function Login() {
         }
 
         catch (error) { 
-            setWrongPasswordText("Wrong username or password.")
+            setWrongPasswordText("Wrong username or password.");
             console.log(error);
         }
     }
