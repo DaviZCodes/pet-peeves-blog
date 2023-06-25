@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
 
@@ -8,18 +8,22 @@ function Login() {
     //useState for username and passwords
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const[wrongPasswordText, setWrongPasswordText] = useState("");
+    const navigate = useNavigate();
 
     //waiting for submit button
     async function submit(element: { preventDefault: () => void; }) {
         element.preventDefault();
 
         try {
-            await axios.post("http://localhost:3000/", {
+            await axios.post("http://localhost:8019/login", {
                 username, password
             })
+            navigate("/")
         }
 
-        catch (error) {
+        catch (error) { 
+            setWrongPasswordText("Wrong username or password.")
             console.log(error);
         }
     }
@@ -38,6 +42,8 @@ function Login() {
                 <input type="password" id = "password" placeholder="password" onChange={(element) => {setPassword(element.target.value);}}></input>
                 <input type="submit" onClick={submit} id = "submit"></input>
             </form>
+
+            <p id = "wrong-password">{wrongPasswordText}</p>
         
             <Link to = "/register" id = "register">
             <h3 id = "question">Don't have an account?</h3>

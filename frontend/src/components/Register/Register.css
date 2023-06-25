@@ -35,11 +35,13 @@
     transition: transform 1s;
 }
 
+.register-container form input {
+    height: 20px;
+}
+
 .register-container form input:hover {
     transform: scale(1.03);
 }
-
-
 
 #join-now {
     margin-top: 20px;
@@ -62,4 +64,8 @@
     .register-container {
     max-height: 450px;
     }
+}
+
+#cannotRegister {
+    color: red;
 }
