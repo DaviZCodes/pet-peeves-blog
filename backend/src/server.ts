@@ -21,7 +21,7 @@ app.use(bodyparser.json());
 //running the server
 const server = http.createServer(app);
 
-const PORT = 8080;
+const PORT = 8019;
 server.listen(PORT, () => {
     console.log(`Pet Logger Backend at ${PORT}`);
 })

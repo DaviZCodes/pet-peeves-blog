@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import axios from "axios";
 import "./Post.css"
 
 function Post() {
@@ -9,7 +10,8 @@ function Post() {
 
     return (
         <div className="post">
-            <h1>Post</h1>
+            <h1>Create a Post</h1>
+            <textarea></textarea>
         </div>
     );
 }

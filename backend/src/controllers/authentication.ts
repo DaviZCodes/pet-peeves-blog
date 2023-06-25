@@ -16,17 +16,19 @@ export const login = async(req: Request, res: Response) => {
             return res.sendStatus(400);
         }
 
-        const expectedHash = authentication(user.authentication.salt, password);
+        const expectedHash = authentication(user.authentication!.salt!, password);
 
-        if (user.authentication?.password !== expectedHash){
+        if (user.authentication!.password !== expectedHash){
+            console.error("Wrong password");
             return res.sendStatus(403);
         }
 
         const salt = random();
-        user.authentication.sessionToken = authentication(salt, user._id.toString());
+        user.authentication!.sessionToken = authentication(salt, user._id.toString());
         await user.save();
 
-        res.cookie("PETLOGGER-AUTH", user.authentication.sessionToken, {domain: "localhost", path: "/"})
+        res.cookie("PETLOGGER-AUTH", user.authentication!.sessionToken, {domain: "localhost", path: "/"})
+        return res.status(200).json(user).end();
 
     }
 
