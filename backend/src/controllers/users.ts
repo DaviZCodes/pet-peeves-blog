@@ -1,11 +1,26 @@
 import express, {Request, Response} from "express";
-import { deleteUserById, getUsers, getUserById } from "../db/users";
+import { deleteUserById, getUsers, getUserById, getUserBySessionToken } from "../db/users";
 
 export const getAllUsers = async(req: Request, res: Response) => {
     try {
         const users = await getUsers();
 
-        return res.status(200).json(users);
+        return res.status(200).json(users).end();   
+    }
+
+    catch(error) {
+        console.log(error);
+        res.sendStatus(400);
+    }
+}
+
+export const getAUser = async(req: Request, res: Response) => {
+    try {
+        const {id} = req.params;
+  
+        const user = await getUserById(id);
+
+        return res.status(200).json(user).end();
     }
 
     catch(error) {
@@ -20,7 +35,7 @@ export const deleteUser = async(req: Request, res: Response) => {
 
         const deletedUser = await deleteUserById(id);
 
-        return res.json(deleteUser);
+        return res.json(deletedUser);
     }
 
     catch(error) {

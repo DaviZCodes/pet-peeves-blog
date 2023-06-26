@@ -1,9 +1,11 @@
 import express, {Router} from "express";
-import { deleteUser, getAllUsers, updateUser } from "../controllers/users";
+import { deleteUser, getAUser, getAllUsers, updateUser } from "../controllers/users";
 import { isAuthenticated, isOwner } from "../middlewares";
+import { getUserBySessionToken } from "db/users";
 
 export default (router: Router) => {
     router.get("/users", isAuthenticated, getAllUsers);
-    router.delete("/users/:id", isOwner, deleteUser);
+    router.get("/user", isAuthenticated, getAUser);
+    router.delete("/users/:id", isAuthenticated, isOwner, deleteUser);
     router.patch("/users/:id", isAuthenticated, isOwner, updateUser);
 }       

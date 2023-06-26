@@ -66,27 +66,3 @@ export const register = async(req: Request, res: Response) => {
         return res.sendStatus(400);
     }
 }
-
-export const profile = async (req: express.Request, res: express.Response) => {
-    try {
-      const sessionToken = req.cookies["PETLOGGER-AUTH"];
-  
-      if (!sessionToken) {
-        return res.sendStatus(401); // Unauthorized
-      }
-  
-      const user = await getUserBySessionToken(sessionToken);
-  
-      if (!user) {
-        return res.sendStatus(404); // Not Found
-      }
-  
-      return res.status(200).json(user.username);
-
-    } 
-    
-    catch (error) {
-      console.log(error);
-      return res.sendStatus(500); 
-    }
-  };
