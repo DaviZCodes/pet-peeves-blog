@@ -32,7 +32,7 @@ export const login = async(req: Request, res: Response) => {
 
     }
 
-    //if error creating a user
+    //if error logging in
     catch(error) {
         console.log(error);
         return res.sendStatus(400);

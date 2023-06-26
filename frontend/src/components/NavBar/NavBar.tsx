@@ -18,7 +18,7 @@ function NavBar() {
         try {
           const response = await axios.get('http://localhost:8019/user', {
             headers: {
-              cookie: document.cookie, 
+              Cookie: document.cookie, 
             },
             withCredentials: true,
           });
