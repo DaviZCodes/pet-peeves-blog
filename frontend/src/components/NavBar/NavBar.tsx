@@ -24,10 +24,13 @@ function NavBar() {
           });
       
           if (response.status === 200) {
+            console.log("working");
             const user = response.data;
             setUsername(user.username);
           }
-        } catch (error) {
+        } 
+        catch (error) {
+          console.log("failed");
           console.log(error);
         }
       };

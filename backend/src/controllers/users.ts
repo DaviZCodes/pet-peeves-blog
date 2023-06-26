@@ -14,20 +14,26 @@ export const getAllUsers = async(req: Request, res: Response) => {
     }
 }
 
-export const getAUser = async(req: Request, res: Response) => {
+export const getAUser = async (req: Request, res: Response) => {
     try {
-        const {id} = req.params;
+      const sessionToken = req.cookies["PETLOGGER-AUTH"]; 
   
-        const user = await getUserById(id);
-
+      const user = await getUserBySessionToken(sessionToken);
+  
+      if (user) {
         return res.status(200).json(user).end();
-    }
+      } 
+      
+      else {
+        return res.sendStatus(404); 
+      }
 
-    catch(error) {
-        console.log(error);
-        res.sendStatus(400);
+    } 
+    catch (error) {
+      console.log(error);
+      res.sendStatus(400);
     }
-}
+  };
 
 export const deleteUser = async(req: Request, res: Response) => {
     try{
