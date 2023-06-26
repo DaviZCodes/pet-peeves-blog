@@ -10,20 +10,25 @@ function NavBar() {
     const [username, setUsername] = useState<string|null>(null);
 
     //see if logged in
-    useEffect(() => {
+    useEffect(() => {   
         fetchProfile();
-      }, []);
+      });
     
     const fetchProfile = async () => {
         try {
-            const response = await axios.get('http://localhost:8019/profile', { withCredentials: true });
+            const response = await axios.get('http://localhost:8019/user', { withCredentials: true });
+            console.log("fetched");
 
             if (response.status === 200) {
             const user = response.data;
-            setUsername(user);
+            setUsername(user.username);
             }
-        } catch (error) {
+
+        } 
+        
+        catch (error) {
             console.log(error);
+            console.log("failed");
         }
     };
 
