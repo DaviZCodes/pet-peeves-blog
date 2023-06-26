@@ -12,29 +12,31 @@ function NavBar() {
     //see if logged in
     useEffect(() => {   
         fetchProfile();
-      });
+      }, []);
     
-    const fetchProfile = async () => {
+      const fetchProfile = async (): Promise<void> => {
         try {
-            const response = await axios.get('http://localhost:8019/user', { withCredentials: true });
-            console.log("fetched");
-
-            if (response.status === 200) {
+          const response = await axios.get('http://localhost:8019/user', {
+            headers: {
+              cookie: document.cookie, 
+            },
+            withCredentials: true,
+          });
+      
+          if (response.status === 200) {
             const user = response.data;
             setUsername(user.username);
-            }
-
-        } 
-        
-        catch (error) {
-            console.log(error);
-            console.log("failed");
+          }
+        } catch (error) {
+          console.log(error);
         }
-    };
+      };
 
     const handleLogout = () => {
+        document.cookie = "PETLOGGER-AUTH=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
         navigate("/login");
-    }
+      };
 
     return (
         <div className="NavBar">
@@ -44,13 +46,13 @@ function NavBar() {
             {/*<img src = {catImage} id = "cat" alt = "Cat"></img>*/}
             <nav className="links">
                 <Link to = "/about"> About Us </Link>
-                {username && (
+                {username ? (
                     <>
                     <Link to = "/post"> Post </Link>
                     <p onClick={handleLogout}>Logout</p>
                     </>
-                )}
-                {!username && (
+                ) :
+                (
                     <>
                     <Link to = "/login"> Login </Link>
                     </>
