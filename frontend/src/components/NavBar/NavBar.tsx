@@ -17,9 +17,16 @@ function NavBar() {
 
     // See if logged in
   useEffect(() => {
+
+    //for testing purposes
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUsername("user");
+      setShowLoginNotification(true);
+    }
+
     const fetchData = async (): Promise<void> => {
       try {
-
         const response = await axios.get('http://localhost:8019/user', {
           withCredentials: true, //use cookies to check if user is logged in
         });
@@ -28,38 +35,53 @@ function NavBar() {
           console.log("Working");
           const user = response.data;
           setUsername(user.username);
+          setShowLoginNotification(true);
         }
-      } catch (error) {
+
+      } 
+      catch (error) {
         console.log("Failed");
         console.log(error);
       }
     };
     fetchData();
-  });
+  }, [username]);
 
   //logout notification
   useEffect(() => {
-    let notificationTime:any;
+    let loginNotificationTime:any;
+    let logoutNotificationTime:any;
+
+    if (showLoginNotification) {
+      loginNotificationTime = setTimeout(() => {
+        setShowLoginNotification(false);
+      }, 2500)
+    }
 
     if (showLogoutNotification) {
-      notificationTime = setTimeout(() => {
+      logoutNotificationTime = setTimeout(() => {
         setShowLogoutNotification(false);
       }, 2500)
     }
 
     return () => {
-      clearTimeout(notificationTime);
+      clearTimeout(loginNotificationTime);
+      clearTimeout(logoutNotificationTime);
     };
 
-  }, [showLogoutNotification]);
+  }, [showLoginNotification, showLogoutNotification]);
     
 
     const handleLogout = () => {
-        document.cookie = "PETLOGGER-AUTH=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        setUsername(null); //since logged out, no more username on navbar
-        setShowLogoutNotification(true); //notification
 
-        navigate("/login");
+      //for testing purposes
+      localStorage.removeItem("token");
+
+      document.cookie = "PETLOGGER-AUTH=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      setUsername(null); //since logged out, no more username on navbar
+      setShowLogoutNotification(true); //notification
+
+      navigate("/login");
       };
 
     return (
@@ -84,6 +106,9 @@ function NavBar() {
             </nav>
             
             {/* notifications */}
+            {showLoginNotification && !showLogoutNotification && (
+                  <p id = "notif">Successfully logged in</p>
+             )}
             {showLogoutNotification && (
                   <p id = "notif">Successfully logged out</p>
              )}

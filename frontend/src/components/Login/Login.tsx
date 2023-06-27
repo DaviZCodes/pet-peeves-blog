@@ -14,8 +14,16 @@ function Login() {
     //waiting for submit button
     async function submit(element: { preventDefault: () => void; }) {
         element.preventDefault();
-
         try {
+
+            //this "user" and "pass" is only for testing purposes to test the frontend, to actually
+            //function, we must use cookie parser from the backend. Delete this after
+            if (username === "user" && password == "pass") {
+                localStorage.setItem("token", "testing-purposes");
+                navigate("/");
+            }
+            //delete above
+
             const response = await axios.post("http://localhost:8019/login", {
               username,
               password,
@@ -53,6 +61,11 @@ function Login() {
             <h3 id = "question">Don't have an account?</h3>
             </Link>
             <Link to = "/register" id = "register2"> Register </Link>
+
+            {/* testing frontend */}
+            <br></br>
+            <br></br>
+            <p style = {{fontSize: 10}}>username: "user" and password: "pass" for frontend testing</p>
             </div>
         </div>
     );

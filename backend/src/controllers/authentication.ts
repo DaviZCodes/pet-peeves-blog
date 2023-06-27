@@ -20,7 +20,6 @@ export const login = async(req: Request, res: Response) => {
         const expectedHash = authentication(user.authentication!.salt!, password);
 
         if (user.authentication!.password !== expectedHash){
-            console.error("Wrong password");
             return res.sendStatus(403);
         }
 
