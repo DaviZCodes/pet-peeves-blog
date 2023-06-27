@@ -45,7 +45,7 @@ function NavBar() {
       }
     };
     fetchData();
-  }, [username]);
+  }, []);
 
   //logout notification
   useEffect(() => {
