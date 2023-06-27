@@ -1,6 +1,7 @@
 import express, {Request, Response} from "express";
-import {createUser, getUserByUsername } from "../db/users";
+import {createUser, getUserByUsername, getUserBySessionToken} from "../db/users";
 import { authentication, random } from "../helpers";
+//import jwt from "jsonwebtoken";
 
 export const login = async(req: Request, res: Response) => {
     try {
@@ -32,7 +33,7 @@ export const login = async(req: Request, res: Response) => {
 
     }
 
-    //if error creating a user
+    //if error logging in
     catch(error) {
         console.log(error);
         return res.sendStatus(400);

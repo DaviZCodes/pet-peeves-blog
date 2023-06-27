@@ -1,11 +1,11 @@
 import express, {Request, Response} from "express";
-import { deleteUserById, getUsers, getUserById } from "../db/users";
+import { deleteUserById, getUsers, getUserById, getUserBySessionToken } from "../db/users";
 
 export const getAllUsers = async(req: Request, res: Response) => {
     try {
         const users = await getUsers();
 
-        return res.status(200).json(users);
+        return res.status(200).json(users).end();   
     }
 
     catch(error) {
@@ -14,13 +14,34 @@ export const getAllUsers = async(req: Request, res: Response) => {
     }
 }
 
+export const getAUser = async (req: Request, res: Response) => {
+    try {
+      const sessionToken = req.cookies["PETLOGGER-AUTH"]; 
+  
+      const user = await getUserBySessionToken(sessionToken);
+  
+      if (user) {
+        return res.status(200).json(user).end();
+      } 
+      
+      else {
+        return res.sendStatus(404); 
+      }
+
+    } 
+    catch (error) {
+      console.log(error);
+      res.sendStatus(400);
+    }
+  };
+
 export const deleteUser = async(req: Request, res: Response) => {
     try{
         const {id} = req.params;
 
         const deletedUser = await deleteUserById(id);
 
-        return res.json(deleteUser);
+        return res.json(deletedUser);
     }
 
     catch(error) {

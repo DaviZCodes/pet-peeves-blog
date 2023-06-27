@@ -16,14 +16,18 @@ function Login() {
         element.preventDefault();
 
         try {
-            await axios.post("http://localhost:8019/login", {
-                username, password
-            })
-            navigate("/")
+            const response = await axios.post("http://localhost:8019/login", {
+              username,
+              password,
+            }, {
+                withCredentials: true, //allow cookies because of authentication middleware
+            });
+      
+            navigate("/");
         }
 
         catch (error) { 
-            setWrongPasswordText("Wrong username or password.")
+            setWrongPasswordText("Wrong username or password.");
             console.log(error);
         }
     }
