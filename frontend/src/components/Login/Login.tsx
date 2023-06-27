@@ -19,12 +19,9 @@ function Login() {
             const response = await axios.post("http://localhost:8019/login", {
               username,
               password,
+            }, {
+                withCredentials: true, //allow cookies because of authentication middleware
             });
-            
-            // getting the token and putting on localstorage
-            // const { token } = response.data;
-      
-            // localStorage.setItem("authToken", token);
       
             navigate("/");
         }

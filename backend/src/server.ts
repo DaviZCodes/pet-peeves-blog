@@ -10,8 +10,9 @@ import mongoose from "mongoose";
 //setting up the app
 const app = express();
 app.use(cors({
+    origin: "http://localhost:5173",  //make sure frontend running on this port
     credentials: true,
-}));
+  }));
 
 app.use(compression());
 app.use(cookieParser());

@@ -1,6 +1,7 @@
 import express, {Request, Response} from "express";
 import {createUser, getUserByUsername, getUserBySessionToken} from "../db/users";
 import { authentication, random } from "../helpers";
+//import jwt from "jsonwebtoken";
 
 export const login = async(req: Request, res: Response) => {
     try {
