@@ -16,10 +16,17 @@ function Login() {
         element.preventDefault();
 
         try {
-            await axios.post("http://localhost:8019/login", {
-                username, password
-            })
-            navigate("/")
+            const response = await axios.post("http://localhost:8019/login", {
+              username,
+              password,
+            });
+            
+            // getting the token and putting on localstorage
+            // const { token } = response.data;
+      
+            // localStorage.setItem("authToken", token);
+      
+            navigate("/");
         }
 
         catch (error) { 

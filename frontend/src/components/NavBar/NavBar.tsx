@@ -9,31 +9,37 @@ function NavBar() {
     const navigate = useNavigate();
     const [username, setUsername] = useState<string|null>(null);
 
-    //see if logged in
-    useEffect(() => {   
-        fetchProfile();
-      }, []);
-    
-      const fetchProfile = async (): Promise<void> => {
-        try {
-          const response = await axios.get('http://localhost:8019/user', {
-            headers: {
-              Cookie: document.cookie, 
-            },
-            withCredentials: true,
-          });
-      
-          if (response.status === 200) {
-            console.log("working");
-            const user = response.data;
-            setUsername(user.username);
-          }
-        } 
-        catch (error) {
-          console.log("failed");
-          console.log(error);
+    // See if logged in
+  useEffect(() => {
+    const fetchData = async (): Promise<void> => {
+      try {
+        const authToken = localStorage.getItem("authToken"); // Retrieve the authentication token from local storage
+        if (!authToken) {
+          // Handle the case when the token is not available
+          console.log('Token not available');
+          return;
         }
-      };
+
+        const response = await axios.get('http://localhost:8019/user', {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+          withCredentials: true,
+        });
+
+        if (response.status === 200) {
+          console.log("Working");
+          const user = response.data;
+          setUsername(user.username);
+        }
+      } catch (error) {
+        console.log("Failed");
+        console.log(error);
+      }
+    };
+    fetchData();
+  });
+
 
     const handleLogout = () => {
         document.cookie = "PETLOGGER-AUTH=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
