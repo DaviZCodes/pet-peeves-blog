@@ -1,14 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import catLogo from "./images/cat logo.png"
 import {Link, useNavigate} from "react-router-dom";  
 import axios from 'axios';
 import './NavBar.css';
+import { UserContext } from '../UserContext/UserContext';
 //import catImage from './images/cat-cartoon.png';
 
 function NavBar() {
 
+    const {userInfo, setUserInfo} = useContext(UserContext);
     const navigate = useNavigate();
-    const [username, setUsername] = useState<string|null>(null);
+    //const [username, setUsername] = useState<string|null>(null);
 
     //login notification
     const [showLoginNotification, setShowLoginNotification] = useState(false);
@@ -18,10 +20,11 @@ function NavBar() {
     // See if logged in
   useEffect(() => {
 
-    //for testing purposes
+    //for frontend testing purposes
     const token = localStorage.getItem("token");
     if (token) {
-      setUsername("user");
+      //setUsername("user");
+      setUserInfo("user");
       setShowLoginNotification(true);
     }
 
@@ -34,7 +37,8 @@ function NavBar() {
         if (response.status === 200) {
           console.log("Working");
           const user = response.data;
-          setUsername(user.username);
+          setUserInfo(user.username);
+          //setUsername(user.username);
           setShowLoginNotification(true);
         }
 
@@ -46,6 +50,13 @@ function NavBar() {
     };
     fetchData();
   }, []);
+
+  //if user info changes and it is not empty, show log in notification
+  useEffect(() => {
+    if (userInfo !== null){
+      setShowLoginNotification(true);
+    }
+  }, [userInfo])
 
   //logout notification
   useEffect(() => {
@@ -73,12 +84,13 @@ function NavBar() {
     
 
     const handleLogout = () => {
-
+      
       //for testing purposes
       localStorage.removeItem("token");
 
       document.cookie = "PETLOGGER-AUTH=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      setUsername(null); //since logged out, no more username on navbar
+      setUserInfo(null);
+      //setUsername(null); //since logged out, no more username on navbar
       setShowLogoutNotification(true); //notification
 
       navigate("/login");
@@ -92,7 +104,7 @@ function NavBar() {
             {/*<img src = {catImage} id = "cat" alt = "Cat"></img>*/}
             <nav className="links">
                 <Link to = "/about">About Us</Link>
-                {username ? (
+                {userInfo ? (
                     <>
                     <Link to = "/post">Post</Link>
                     <p onClick={handleLogout}>Logout</p>
