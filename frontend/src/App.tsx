@@ -7,23 +7,26 @@ import Register from './components/Register/Register';
 import Post from './components/Post/Post';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React from 'react';
+import { UserContextProvider } from './components/UserContext/UserContext';
 
 function App() {
   return (
-    <Router>
-    <div className="App">
-      <header className="App-header">
-        <NavBar/>
-        <Routes>
-          <Route path="/" element = {<Home/>} />
-          <Route path="/about" element = {<About/>} />
-          <Route path="/login" element = {<Login/>} />
-          <Route path="/register" element = {<Register/>} />
-          <Route path="/post" element = {<Post/>} />
-        </Routes>
-      </header>
-    </div>
-    </Router>
+    <UserContextProvider>
+      <Router>
+      <div className="App">
+        <header className="App-header">
+          <NavBar/>
+          <Routes>
+            <Route path="/" element = {<Home/>} />
+            <Route path="/about" element = {<About/>} />
+            <Route path="/login" element = {<Login/>} />
+            <Route path="/register" element = {<Register/>} />
+            <Route path="/post" element = {<Post/>} />
+          </Routes>
+        </header>
+      </div>
+      </Router>
+    </UserContextProvider>
   );
 }
 

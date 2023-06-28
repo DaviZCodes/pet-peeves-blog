@@ -19,7 +19,7 @@ h1 {
     width: 800px;
     height: 500px;
     padding: 30px;
-    background: linear-gradient(to right, rgba(30, 132, 25, 0.5), rgba(39, 39, 172, 0.5));
+    background: linear-gradient(to right, rgba(39, 39, 172, 0.5), rgba(30, 132, 25, 0.5));
 }
 
 .container form {

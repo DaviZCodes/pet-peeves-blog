@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
+import { UserContext } from "../UserContext/UserContext";
 
 function Login() {
 
@@ -10,6 +11,7 @@ function Login() {
     const [password, setPassword] = useState("");
     const[wrongPasswordText, setWrongPasswordText] = useState("");
     const navigate = useNavigate();
+    const { setUserInfo } = useContext(UserContext);
 
     //waiting for submit button
     async function submit(element: { preventDefault: () => void; }) {
@@ -20,6 +22,7 @@ function Login() {
             //function, we must use cookie parser from the backend. Delete this after
             if (username === "user" && password == "pass") {
                 localStorage.setItem("token", "testing-purposes");
+                setUserInfo( username );
                 navigate("/");
             }
             //delete above
@@ -30,7 +33,7 @@ function Login() {
             }, {
                 withCredentials: true, //allow cookies because of authentication middleware
             });
-      
+            setUserInfo(username );
             navigate("/");
         }
 
