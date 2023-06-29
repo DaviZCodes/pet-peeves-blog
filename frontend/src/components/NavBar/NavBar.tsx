@@ -11,9 +11,9 @@ function NavBar() {
     //const [username, setUsername] = useState<string|null>(null);
 
     //login notification
-    const [showLoginNotification, setShowLoginNotification] = useState(false);
+    const [showLoginNotification, setShowLoginNotification] = useState<boolean>(false);
     //logout notification
-    const [showLogoutNotification, setShowLogoutNotification] = useState(false);
+    const [showLogoutNotification, setShowLogoutNotification] = useState<boolean>(false);
 
     // See if logged in
   useEffect(() => {

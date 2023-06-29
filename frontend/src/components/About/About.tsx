@@ -11,7 +11,7 @@ function About() {
     }, [])
 
     //showing text when user clicks on cat
-    const [isVisible, setVisible]= useState(false)
+    const [isVisible, setVisible]= useState<boolean>(false)
 
     const showText = () => {
         setVisible(true);

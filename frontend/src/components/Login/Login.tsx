@@ -7,9 +7,9 @@ import { UserContext } from "../UserContext/UserContext";
 function Login() {
 
     //useState for username and passwords
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const[wrongPasswordText, setWrongPasswordText] = useState("");
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const[wrongPasswordText, setWrongPasswordText] = useState<string>("");
     const navigate = useNavigate();
     const { setUserInfo } = useContext(UserContext);
 
