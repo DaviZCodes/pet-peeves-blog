@@ -1,10 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
-import catLogo from "./images/cat logo.png"
 import {Link, useNavigate} from "react-router-dom";  
 import axios from 'axios';
 import './NavBar.css';
 import { UserContext } from '../UserContext/UserContext';
-//import catImage from './images/cat-cartoon.png';
 
 function NavBar() {
 
@@ -107,6 +105,7 @@ function NavBar() {
                 {userInfo ? (
                     <>
                     <Link to = "/post">Post</Link>
+                    <Link to = "/profile">Profile</Link>
                     <p onClick={handleLogout}>Logout</p>
                     </>
                 ) :
