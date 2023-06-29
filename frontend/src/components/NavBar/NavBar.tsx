@@ -97,7 +97,7 @@ function NavBar() {
     return (
         <div className="NavBar">
             <header>
-            <Link to = "/"> Pet Peeves!</Link>
+            <Link to = "/" title="Home Page"> Pet Peeves!</Link>
             </header>
             {/*<img src = {catImage} id = "cat" alt = "Cat"></img>*/}
             <nav className="links">
