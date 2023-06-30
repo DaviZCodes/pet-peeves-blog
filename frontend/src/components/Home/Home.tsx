@@ -12,27 +12,29 @@ function Home() {
 
     return (
         <div className="home">
-            <h1>Home Page</h1>
             <div className="posts-container">
-                <div className="post">
-                    <h1>Dog</h1>
+                <div className="post-home">
+                    <h1>My dog is WAY too SPOILED!</h1>
                     <div className="image">
                         <img src = {funnyDog}></img>
                     </div>
+                    <p>My dog is an alcoholic.</p>
                 </div>
 
                 <div className="post-home">
-                    <h1>Parrot</h1>
+                    <h1>My parrot likes to lie about everything?</h1>
                     <div className="image">
                      <img src = {parrot}></img>
                     </div>
+                    <p>My parrot likes to lie about everything?</p>
                 </div>
 
                 <div className="post">
-                    <h1>Shark</h1>
+                    <h1>How do you pet a shark?</h1>
                     <div className="image">
                         <img src = {shark}></img>
                     </div>
+                    <p>How do you pet a shark?</p>
                 </div>
             </div>
         </div>
