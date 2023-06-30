@@ -22,7 +22,7 @@ function Home() {
                 </div>
 
                 <div className="post-home">
-                    <h1>My parrot likes to lie about everything?</h1>
+                    <h1>Why does my parrot lie about everything?</h1>
                     <div className="image">
                      <img src = {parrot}></img>
                     </div>
@@ -34,7 +34,7 @@ function Home() {
                     <div className="image">
                         <img src = {shark}></img>
                     </div>
-                    <p>How do you pet a shark?</p>
+                    <p>Hey. I am a millionaire from Dubai. I have bought a giant 10,000 square feet aquarium. Is it possible to pet my shark?</p>
                 </div>
             </div>
         </div>
