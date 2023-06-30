@@ -11,10 +11,17 @@
     font-size: clamp(16px, 5.3vw, 24px);
 }
 
+#sad-cat {
+    max-width: 35%;
+    margin-top: 10px;
+    height: auto;
+    object-fit: cover;
+}
+
 #no-posts {
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-    height: 50vh;
+    height: 10vh;
 }
