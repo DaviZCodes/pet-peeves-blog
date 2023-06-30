@@ -25,7 +25,7 @@ function Post() {
     }, [])
 
     return (
-        <div className="post">
+        <div className="create-post">
             <h1>Create a Post</h1>
             <textarea></textarea>
             <div className="button-container">

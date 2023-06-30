@@ -16,6 +16,19 @@
     height: 500px;
     padding: 30px;
     background: linear-gradient(to right, rgba(62, 177, 56, 0.5), rgba(205, 161, 40, 0.5));
+
+    @media (max-width: 300px) {
+        width: 200px;
+        margin-left: 10px;
+    }
+
+    @media (max-height: 670px){
+        height: 450px;
+    }
+
+    @media (max-height: 610px){
+        height: 400px;
+    }
 }
 
 .register-container form {
@@ -24,6 +37,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 300px) {
+        font-size: 10px;
+    }
 }
 
 .register-container form label,
@@ -54,6 +71,11 @@
     cursor: pointer;
     transition: transform 1s;
     font-weight: bold;
+    width: 300px;
+
+    @media (max-width: 300px) {
+        width: 50px;
+    }
 }
 
 #join-now:hover{

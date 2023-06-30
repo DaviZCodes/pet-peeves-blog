@@ -20,6 +20,14 @@ h1 {
     height: 500px;
     padding: 30px;
     background: linear-gradient(to right, rgba(39, 39, 172, 0.5), rgba(30, 132, 25, 0.5));
+    
+    @media (max-height: 670px){
+        height: 450px;
+    }
+
+    @media (max-height: 610px){
+        height: 400px;
+    }
 }
 
 .container form {
@@ -40,7 +48,12 @@ h1 {
 }
 
 #username, #password {
-    height: 20px;
+    height: 30px;
+    width: 300px;
+
+    @media (max-width: 300px) {
+        width: 200px;
+    }
 }
 
 
@@ -91,6 +104,11 @@ h1 {
     cursor: pointer;
     transition: transform 1s;
     font-weight: bold;
+    width: 300px;
+
+    @media (max-width: 300px) {
+        width: 50px;
+    }
 }
 
 #submit:hover{
@@ -102,6 +120,10 @@ h1 {
     transform: translateY(30px);
     font-size: 20px;
     color: black;
+
+    @media (max-width: 300px) {
+        font-size: 18px;
+    }
 }
 
 #wrong-password {
