@@ -15,7 +15,7 @@ function Profile() {
             <h1>Welcome back, "{userInfo}".</h1>
 
             <h2>Below are your posts:</h2>
-            <p>{noPostsText}</p>
+            <p id = "no-posts">{noPostsText}</p>
         </div>
     );
 }
