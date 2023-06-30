@@ -25,3 +25,7 @@
     align-items: center;
     height: 10vh;
 }
+
+#post {
+    font-size: clamp(16px, 5.3vw, 24px);
+}
