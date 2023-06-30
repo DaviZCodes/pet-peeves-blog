@@ -1,3 +1,11 @@
 .create-post {
     text-align: center;
 }
+
+#char-max {
+    font-size: 10px;
+}
+
+#passed-char {
+    color: crimson;
+}
