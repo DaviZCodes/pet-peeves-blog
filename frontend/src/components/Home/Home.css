@@ -2,13 +2,20 @@
     text-align: center;
 }
 
-img {
+.post-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   
+    margin-bottom: 30px;
+}
+
+#poster {
+    margin-top: -10px;
+}
+
+
+#home-img {
     max-width: 100%;
     max-height: 60vh;
 }
 
-.post-home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
