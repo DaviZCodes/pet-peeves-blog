@@ -23,7 +23,8 @@ function Home() {
                             <a className="author">Sophie Smith</a>
                             <time>Jan 1, 2023</time>
                         </p>
-                        <p id = "summary">My dog is an alcoholic.</p>
+                        <p id = "summary">My dog is an alcoholic.
+                                        If I don't treat her like a princess, she just whines all day long.</p>
                     </div>
                 </div>
 
@@ -37,7 +38,8 @@ function Home() {
                             <a className="author">John Thoe</a>
                             <time>June 30, 2023</time>
                         </p>
-                        <p id = "summary">My parrot likes to lie about everything?</p>
+                        <p id = "summary">My parrot likes to lie about everything?
+                                        In sum, my parrot is a pathological liar. </p>
                     </div>
                 </div>
 
@@ -51,7 +53,7 @@ function Home() {
                             <a className="author">Saad Ali</a>
                             <time>Mar 23, 2023</time>
                         </p>
-                        <p id = "summary">Hey. I am a millionaire from Dubai. I have bought a giant aquarium...</p>
+                        <p id = "summary">Hey! I am a millionaire from Dubai. I have bought a giant aquarium. I was just wondering if sharks like to be pet like dogs?</p>
                     </div>
                 </div>
             </div>

@@ -61,9 +61,9 @@ function Post() {
             <h1>Create a Post</h1>
             <div className="user-input">
                 <input type = "title" placeholder="Title of your post" required></input>
-                <input type = "summary" placeholder="Summary of your post" required></input>
-                <input type = "file"></input>
-                <ReactQuill id = "react-quill" value = {quillContent} onChange={handleQuillChange}></ReactQuill>
+                <input type="file" id="file-input" accept = ".jpg, .jpeg, .png"></input>
+                <label htmlFor="file-input" className="custom-file-label">Choose a file</label>
+                <ReactQuill id = "react-quill" value = {quillContent} onChange={handleQuillChange} placeholder="Write your post info here"></ReactQuill>
             </div>
 
             <p id = "char-max">char max: 2000</p>
