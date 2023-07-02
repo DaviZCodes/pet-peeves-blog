@@ -11,7 +11,7 @@ function Login() {
     const [password, setPassword] = useState<string>("");
     const[wrongPasswordText, setWrongPasswordText] = useState<string>("");
     const navigate = useNavigate();
-    const { setUserInfo } = useContext(UserContext);
+    const { setUserInfo, userInfo } = useContext(UserContext);
 
     //waiting for submit button
     async function submit(element: { preventDefault: () => void; }) {
@@ -47,6 +47,13 @@ function Login() {
     useEffect(() =>{
         document.title = "Login!"
     }, [])
+
+    //if logged in, automatically go to "/post"
+    useEffect(() => {
+        if (userInfo){
+            navigate("/post");
+        }
+    }, [userInfo])
 
     return (
         <div className="login">

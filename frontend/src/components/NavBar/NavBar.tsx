@@ -58,8 +58,8 @@ function NavBar() {
 
   //logout notification
   useEffect(() => {
-    let loginNotificationTime:any;
-    let logoutNotificationTime:any;
+    let loginNotificationTime:number;
+    let logoutNotificationTime:number;
 
     if (showLoginNotification) {
       loginNotificationTime = setTimeout(() => {
