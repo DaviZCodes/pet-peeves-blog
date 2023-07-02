@@ -1,4 +1,7 @@
 import express, {Request, Response} from "express";
+import fs from "fs";
+import multer from "multer";
+const uploadMiddleware = multer({dest:"uploads/"})
 import { deleteUserById, getUsers, getUserById, getUserBySessionToken } from "../db/users";
 
 export const getAllUsers = async(req: Request, res: Response) => {
@@ -73,3 +76,28 @@ export const updateUser = async(req: Request, res: Response) => {
         res.sendStatus(400);
     }
 }
+
+export const posts = async (req: Request, res: Response) => {
+    try {
+      const file = req.file;
+      if (!file) {
+        return res.sendStatus(400);
+      }
+  
+      // Process the file and move it to the "uploads" folder
+      const filename = file.filename;
+      const destination = `uploads/${filename}`;
+      fs.renameSync(file.path, destination);
+  
+      // Retrieve other post information from the request body
+      const { title, content } = req.body;
+  
+      // Handle the logic to save the post in the database or perform any other operations
+      // ...
+  
+      return res.status(200).json({ filename }).end();
+    } catch (error) {
+      console.log(error);
+      return res.sendStatus(400);
+    }
+  };

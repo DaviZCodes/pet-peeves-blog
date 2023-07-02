@@ -33,7 +33,7 @@ function Login() {
             }, {
                 withCredentials: true, //allow cookies because of authentication middleware
             });
-            setUserInfo(username );
+            setUserInfo(username);
             navigate("/");
         }
 
