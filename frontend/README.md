@@ -1,6 +1,6 @@
 # Frontend on React 
 
-I wanted a simple and fun style. I didn't add too many animations. It's a pet log. I wanted to keep it cute. 
+I wanted a simple and fun style. I didn't add too many animations. It's a pet blog. I wanted to keep it cute. 
 
 
 ### Technologies used:
