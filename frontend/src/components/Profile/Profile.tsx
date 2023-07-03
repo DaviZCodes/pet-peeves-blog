@@ -2,9 +2,10 @@ import React, {useState, useEffect, useContext} from "react";
 import "./Profile.css"
 import { UserContext } from '../UserContext/UserContext';
 import sadCat from "./images/cat sad.png"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Profile() {
+    const navigate = useNavigate();
     const {userInfo, setUserInfo} = useContext(UserContext);
     const [showCatAndPost, setShowCatAndPost] = useState<boolean>(true);
 
@@ -12,6 +13,15 @@ function Profile() {
     //     setNoPostsText("");
     //     setShowCat(false);
     // }, [])
+
+    useEffect(() =>{
+        //change title of tab
+        document.title = "Profile!";
+
+        if (!userInfo) {
+            navigate("/login");
+        }
+    }, [])
 
     return (
         <div className="profile">

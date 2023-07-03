@@ -21,25 +21,29 @@ function Post() {
 
     async function createPost(event: { preventDefault: () => void; }) {
         event.preventDefault();
+        //if not all fields are filled out
+        const titleInput = document.getElementById("title") as HTMLInputElement;
+        if (!quillContent || !titleInput.value) {
+          setShowYouMustFillText(true);
+          return;
+        }
+
+        //if passed character limit
+        if (showPassedCharLimitText){
+            return;
+        }
 
         try {
             const data = new FormData();
             data.set("title", title);
             data.set("content", quillContent);
-            data.set("image", images[0]);
+            data.set("image", images[0]); //ensure only one image is passed
              
             const response = await axios.post("http://localhost:8019/posts", data);
         }
 
         catch (error) { 
             console.log(error);
-        }
-        
-        //if not all fields are filled out
-        const titleInput = document.getElementById("title") as HTMLInputElement;
-        if (!quillContent || !titleInput.value) {
-          setShowYouMustFillText(true);
-          return;
         }
     }
 
@@ -61,7 +65,6 @@ function Post() {
         
     
     const handleImageChange = () => {
-
         //change to file name
         const fileInput = document.getElementById("file-input") as HTMLInputElement;
         if (fileInput.files && fileInput.files.length > 0) {
@@ -93,8 +96,10 @@ function Post() {
                 <div className="user-input">
                     <input type = "title" value = {title} placeholder="Title of your post" 
                     onChange={(event) => {setTitle(event.target.value)}} required></input>
+
                     <input type="file" id="file-input" accept = ".jpg, .jpeg, .png" onChange={handleImageChange}></input>
                     <label htmlFor="file-input"  id="image" className="custom-file-label">{selectedFileNameText || "Choose a file"}</label>
+
                     <ReactQuill id = "react-quill" value = {quillContent} 
                     onChange={handleQuillChange} placeholder="Write your post info here"></ReactQuill>
                 </div>
