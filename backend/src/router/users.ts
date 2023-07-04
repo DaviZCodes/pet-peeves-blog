@@ -1,4 +1,4 @@
-import express, {Router} from "express";
+import {Router} from "express";
 import { deleteUser, getAUser, getAllUsers, updateUser } from "../controllers/users";
 import { isAuthenticated, isOwner } from "../middlewares";
 
