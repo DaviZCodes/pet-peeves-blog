@@ -1,17 +1,17 @@
 import React, {useState, useEffect, useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
+import "./Login.scss";
 import axios from "axios";
 import { UserContext } from "../UserContext/UserContext";
 
 function Login() {
 
     //useState for username and passwords
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const[wrongPasswordText, setWrongPasswordText] = useState("");
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const[wrongPasswordText, setWrongPasswordText] = useState<string>("");
     const navigate = useNavigate();
-    const { setUserInfo } = useContext(UserContext);
+    const { setUserInfo, userInfo } = useContext(UserContext);
 
     //waiting for submit button
     async function submit(element: { preventDefault: () => void; }) {
@@ -33,7 +33,7 @@ function Login() {
             }, {
                 withCredentials: true, //allow cookies because of authentication middleware
             });
-            setUserInfo(username );
+            setUserInfo(username);
             navigate("/");
         }
 
@@ -47,6 +47,13 @@ function Login() {
     useEffect(() =>{
         document.title = "Login!"
     }, [])
+
+    //if logged in, automatically go to "/post"
+    useEffect(() => {
+        if (userInfo){
+            navigate("/post");
+        }
+    }, [userInfo])
 
     return (
         <div className="login">

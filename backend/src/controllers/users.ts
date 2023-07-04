@@ -1,5 +1,8 @@
 import express, {Request, Response} from "express";
+import fs from "fs";
+import multer from "multer";
 import { deleteUserById, getUsers, getUserById, getUserBySessionToken } from "../db/users";
+const uploadMiddleware = multer({dest:"uploads/"})
 
 export const getAllUsers = async(req: Request, res: Response) => {
     try {
@@ -73,3 +76,18 @@ export const updateUser = async(req: Request, res: Response) => {
         res.sendStatus(400);
     }
 }
+
+export const posts = async (req: Request, res: Response) => {
+    try {
+
+    const { title, content } = req.body;
+    const image = req.file; 
+
+      return res.status(200).json({files:req.file}).end();
+
+    }
+     catch (error) {
+      console.log(error);
+      return res.sendStatus(400);
+    }
+  };

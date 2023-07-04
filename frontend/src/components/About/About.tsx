@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom"
 import sleepyCatGif from "./images/sleepy_cat_gif.gif"
-import "./About.css"
+import "./About.scss"
 
 function About() {
 
@@ -11,7 +11,7 @@ function About() {
     }, [])
 
     //showing text when user clicks on cat
-    const [isVisible, setVisible]= useState(false)
+    const [isVisible, setVisible]= useState<boolean>(false)
 
     const showText = () => {
         setVisible(true);

@@ -1,10 +1,8 @@
 import React, {useState, useEffect, useContext} from 'react';
-import catLogo from "./images/cat logo.png"
 import {Link, useNavigate} from "react-router-dom";  
 import axios from 'axios';
-import './NavBar.css';
+import './NavBar.scss';
 import { UserContext } from '../UserContext/UserContext';
-//import catImage from './images/cat-cartoon.png';
 
 function NavBar() {
 
@@ -13,9 +11,9 @@ function NavBar() {
     //const [username, setUsername] = useState<string|null>(null);
 
     //login notification
-    const [showLoginNotification, setShowLoginNotification] = useState(false);
+    const [showLoginNotification, setShowLoginNotification] = useState<boolean>(false);
     //logout notification
-    const [showLogoutNotification, setShowLogoutNotification] = useState(false);
+    const [showLogoutNotification, setShowLogoutNotification] = useState<boolean>(false);
 
     // See if logged in
   useEffect(() => {
@@ -60,8 +58,8 @@ function NavBar() {
 
   //logout notification
   useEffect(() => {
-    let loginNotificationTime:any;
-    let logoutNotificationTime:any;
+    let loginNotificationTime:number;
+    let logoutNotificationTime:number;
 
     if (showLoginNotification) {
       loginNotificationTime = setTimeout(() => {
@@ -99,7 +97,7 @@ function NavBar() {
     return (
         <div className="NavBar">
             <header>
-            <Link to = "/"> Pet Peeves!</Link>
+            <Link to = "/" title="Home Page"> Pet Peeves!</Link>
             </header>
             {/*<img src = {catImage} id = "cat" alt = "Cat"></img>*/}
             <nav className="links">
@@ -107,6 +105,7 @@ function NavBar() {
                 {userInfo ? (
                     <>
                     <Link to = "/post">Post</Link>
+                    <Link to = "/profile">Profile</Link>
                     <p onClick={handleLogout}>Logout</p>
                     </>
                 ) :
