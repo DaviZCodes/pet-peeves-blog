@@ -1,3 +1,10 @@
+#home-header{
+    font-size: clamp(16px, 5.3vw, 50px);
+    text-align: center;
+    padding: 0px;
+    margin: 0px 0px;
+}
+
 .posts-container {
     display: flex;
     flex-direction: column;
@@ -6,7 +13,7 @@
     padding: 50px;
     margin: 0 auto;
 
-    @media (max-width: 800px){
+    @media (max-width: 1000px){
         padding: 20px;
     }
 
@@ -23,7 +30,7 @@
     margin-bottom: 20px;
     cursor: pointer;
 
-    @media (max-width: 600px){
+    @media (max-width: 1000px){
         flex-direction: column;
         margin-bottom: 10px;
         padding: 0px;
@@ -43,7 +50,11 @@
 #home-img {
     padding: 10px;
     max-width: 100%;
-    max-height: 60vh;
+    max-height: 50vh;
+
+    @media (min-width: 501px) {
+        max-width: 700px;
+    }
 }
 
 .post-content {
@@ -56,9 +67,3 @@
 #summary {
     max-width: 80%;
 }
-
-@media (min-width: 501px) {
-    #home-img {
-      max-width: 700px;
-    }
-  }

@@ -1,5 +1,5 @@
-import express, {Request, Response} from "express";
-import {createUser, getUserByUsername} from "../db/users";
+import {Request, Response} from "express";
+import {createUser, getUserByUsername} from "../database/users";
 import { authentication, random } from "../helpers";
 //import jwt from "jsonwebtoken";
 

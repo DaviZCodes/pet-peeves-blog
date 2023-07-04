@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} from "react";
+import {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import "./Post.scss"
 import { UserContext } from "../UserContext/UserContext";
@@ -62,6 +62,8 @@ function Post() {
             }
              
             const response = await axios.post("http://localhost:8019/posts", data);
+            navigate("/");
+            return;
         }
 
         catch (error) { 

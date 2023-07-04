@@ -1,10 +1,32 @@
 import "./Home.scss"
-import React, {useEffect} from "react";
+import {useState, useEffect} from "react";
 import funnyDog from "./images/funny dog.png";
 import parrot from "./images/parrot.jpeg";
 import shark from "./images/shark.jpg";
+import axios from "axios";
 
 function Home() {
+    //state for posts
+    const [posts, setPosts] = useState();
+
+    //fetch all the new posts
+    useEffect(() => {
+        const fetchPosts = async (): Promise<void> => {
+            try {
+                const response = await axios.get("http://localhost:8019/posts");
+
+                if (response.status === 200) {
+                    console.log("potato", response.data);
+                }
+            }
+            catch(error) {
+                console.log(error);
+            }
+        };
+
+        fetchPosts();
+    }, [])
+
     //change tab title
     useEffect(() => {
         document.title = "Pet Peeves!";
@@ -12,7 +34,10 @@ function Home() {
 
     return (
         <div className="home">
+            <h1 id = "home-header">Pet Peeves</h1>
+
             <div className="posts-container">
+
                 <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
