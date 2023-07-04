@@ -1,14 +1,14 @@
 .profile {
     text-align: center;
-}
 
-.profile h2 {
+    h2 {
     font-weight: normal;
     font-size: clamp(20px, 5.3vw, 24px);
-}
+    }
 
-.profile p {
-    font-size: clamp(16px, 5.3vw, 24px);
+    p {
+        font-size: clamp(16px, 5.3vw, 24px);
+    }
 }
 
 #sad-cat {

@@ -41,23 +41,22 @@
     @media (max-width: 300px) {
         font-size: 10px;
     }
-}
 
-.register-container form label,
-.register-container form input {
+    label, input {
     margin-top: 5px;
     margin-bottom: 10px;
     border-radius: 5px;
     border-width: 1px;
     transition: transform 1s;
-}
+    }
 
-.register-container form input {
-    height: 20px;
-}
+    input {
+        height: 20px;
 
-.register-container form input:hover {
-    transform: scale(1.03);
+        &:hover {
+            transform: scale(1.03);
+        }
+    }
 }
 
 #join-now {
@@ -76,10 +75,10 @@
     @media (max-width: 300px) {
         width: 50px;
     }
-}
 
-#join-now:hover{
-    transform: scale(1.06);
+    &:hover{
+        transform: scale(1.06);
+    }
 }
 
 @media (max-width: 350px) {

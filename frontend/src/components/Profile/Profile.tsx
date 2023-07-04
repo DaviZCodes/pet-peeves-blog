@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import "./Profile.css"
+import "./Profile.scss"
 import { UserContext } from '../UserContext/UserContext';
 import sadCat from "./images/cat sad.png"
 import { Link, useNavigate } from "react-router-dom";

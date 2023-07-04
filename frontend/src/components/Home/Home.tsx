@@ -1,4 +1,4 @@
-import "./Home.css"
+import "./Home.scss"
 import React, {useEffect} from "react";
 import funnyDog from "./images/funny dog.png";
 import parrot from "./images/parrot.jpeg";

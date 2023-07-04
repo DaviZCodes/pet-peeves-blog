@@ -1,6 +1,6 @@
 import React, {useEffect, useContext, useState} from "react";
 import axios from "axios";
-import "./Post.css"
+import "./Post.scss"
 import { UserContext } from "../UserContext/UserContext";
 import { useNavigate } from "react-router";
 import ReactQuill from "react-quill";
