@@ -15,9 +15,26 @@ function Post() {
     const [showPassedCharLimitText, setShowPassedCharLimitText] = useState<boolean>(false);
     const [showYouMustFillText, setShowYouMustFillText] = useState<boolean>(false);
     const [title, setTitle] = useState<string>("");
-    const [images, setImages] = useState<any>(null);
+    const [image, setImage] = useState<FileList>();
     const [selectedFileNameText, setSelectedFileNameText] = useState<string>("");
     const [quillContent, setQuillContent] = useState<string>("");
+
+    const modules = {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote'],
+          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+          ['link', 'image'],
+          ['clean']
+        ],
+      }
+
+    const formats = [
+        'header',
+        'bold', 'italic', 'underline', 'strike', 'blockquote',
+        'list', 'bullet', 'indent',
+        'link', 'image'
+      ]
 
     async function createPost(event: { preventDefault: () => void; }) {
         event.preventDefault();
@@ -33,11 +50,16 @@ function Post() {
             return;
         }
 
+        console.log(image);
+
         try {
             const data = new FormData();
             data.set("title", title);
             data.set("content", quillContent);
-            data.set("image", images[0]); //ensure only one image is passed
+
+            if (image) {
+                data.set("image", image[0]); //ensure only one image is passed
+            }
              
             const response = await axios.post("http://localhost:8019/posts", data);
         }
@@ -64,16 +86,19 @@ function Post() {
       }, [showYouMustFillText]);
         
     
-    const handleImageChange = () => {
-        //change to file name
-        const fileInput = document.getElementById("file-input") as HTMLInputElement;
+      const handleImageChange = (event: { target: any; }) => {
+        const fileInput = event.target;
         if (fileInput.files && fileInput.files.length > 0) {
-            setSelectedFileNameText(fileInput.files[0].name);
-            setImages(fileInput.files[0]);
+          setImage(fileInput.files);
+          setSelectedFileNameText(fileInput.files[0].name);
+        } 
+        else {
+          setImage(undefined);
+          setSelectedFileNameText("");
         }
-    }
+      };
 
-    const handleQuillChange = (content: string) => {
+    const handleQuillChange = (content:string) => {
         setQuillContent(content);
         //display error if char limit is passed
         setShowPassedCharLimitText(content.length > 2000)
@@ -94,14 +119,14 @@ function Post() {
             <h1>Create a Post</h1>
             <form onSubmit={createPost}>
                 <div className="user-input">
-                    <input type = "title" value = {title} placeholder="Title of your post" 
+                    <input type = "title" id = "title" value = {title} placeholder="Title of your post" 
                     onChange={(event) => {setTitle(event.target.value)}} required></input>
 
-                    <input type="file" id="file-input" accept = ".jpg, .jpeg, .png" onChange={handleImageChange}></input>
+                    <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange}></input>
                     <label htmlFor="file-input"  id="image" className="custom-file-label">{selectedFileNameText || "Choose a file"}</label>
 
-                    <ReactQuill id = "react-quill" value = {quillContent} 
-                    onChange={handleQuillChange} placeholder="Write your post info here"></ReactQuill>
+                    <ReactQuill id = "react-quill" value = {quillContent} modules={modules} formats={formats}
+                    onChange={handleQuillChange} placeholder="Write your post info here"/>
                 </div>
 
                 <p id = "char-max">char max: 2000</p>

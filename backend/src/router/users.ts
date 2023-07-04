@@ -1,7 +1,6 @@
 import express, {Router} from "express";
 import { deleteUser, getAUser, getAllUsers, updateUser } from "../controllers/users";
 import { isAuthenticated, isOwner } from "../middlewares";
-import { getUserBySessionToken } from "db/users";
 
 export default (router: Router) => {
     router.get("/users", isAuthenticated, getAllUsers);

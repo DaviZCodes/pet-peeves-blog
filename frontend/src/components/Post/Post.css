@@ -53,7 +53,7 @@
 .user-input #react-quill {
     border-radius: 6px;
     border-width: 1px;
-    border-color: grey;
+    border-color: rgb(177, 175, 175);
 }
 
 .user-input input[type="file"] {
