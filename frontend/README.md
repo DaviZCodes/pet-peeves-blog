@@ -6,4 +6,4 @@ I wanted a simple and fun style. I didn't add too many animations. It's a pet bl
 ### Technologies used:
 - Vite as build tool
 - Node package manager
-- SASS
+- soon translating CSS to SASS
