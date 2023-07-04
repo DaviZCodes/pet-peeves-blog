@@ -2,7 +2,20 @@ $background-color: rgb(243, 166, 24);
 
 .create-post {
     text-align: center;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .button-container {
+    @media (max-width: 750px) {
+        margin-top: 36px;
+    }
+
+    @media (max-width: 350px) {
+        margin-top: 56px;
+    }
+  }
 
 .user-input {
     display: flex;
