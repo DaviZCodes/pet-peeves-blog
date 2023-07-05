@@ -2,8 +2,8 @@
 @import "../styles/backgroundcolor";
 
 .NavBar {
-    margin-top: 10px;
-    margin-bottom: 25px;
+    margin-top: 6px;
+    margin-bottom: 26px;
     background-color: transparent;
     min-width: auto;
     min-height: 60px;
@@ -27,11 +27,9 @@
         text-decoration-color: $background-color;
         padding: 10px 0px;
       }
-  }
-  
-}
+    }
 
-.links {
+  .links {
     a {
       color: black;
       text-decoration: none;
@@ -62,77 +60,79 @@
         text-decoration-color: rgba(250, 6, 6, 0.9);
       }
      }
-}
-
-#notif {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: rgba(243, 166, 24, 0.5);
-  padding: 15px 5px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 99;
-}
-
-@media (max-width: 500px) {
-  .NavBar {
-      min-height: 50px;
-  }
-  header a {
-    font-size: 18px;
   }
 
-  .links { 
-    a {
-      font-size: 16px;
-      margin-right: 5px;
-      }
-
-    p {
+  @media (max-width: 500px) {
+    .NavBar {
+        min-height: 50px;
+    }
+    header a {
+      font-size: 18px;
+    }
+  
+    .links { 
+      a {
         font-size: 16px;
-    }
-  }
-}
-
-@media (max-width: 350px) {
-  .NavBar {
-      min-height: 50px;
-  }
-  header a {
-    font-size: 12px;
-  }
-
-  .links { 
-    a {
-      font-size: 12px;
-      margin-right: 5px;
-      }
-
-    p {
-        font-size: 12px;
-    }
-  }
-}
-
-@media (max-width: 300px) {
-  .NavBar {
-      min-height: 50px;
-  }
-  header a {
-    font-size: 12px;
-  }
-
-  .links {
-    a {
-      font-size: 10px;
-      margin-right: 5px;
-      }
-
+        margin-right: 5px;
+        }
+  
       p {
-      font-size: 10px;
+          font-size: 16px;
       }
+    }
+  }
+  
+  @media (max-width: 350px) {
+    .NavBar {
+        min-height: 50px;
+    }
+    header a {
+      font-size: 12px;
+    }
+  
+    .links { 
+      a {
+        font-size: 12px;
+        margin-right: 5px;
+        }
+  
+      p {
+          font-size: 12px;
+      }
+    }
+  }
+  
+  @media (max-width: 300px) {
+    .NavBar {
+        min-height: 50px;
+    }
+    header a {
+      font-size: 12px;
+    }
+  
+    .links {
+      a {
+        font-size: 10px;
+        margin-right: 5px;
+        }
+  
+        p {
+        font-size: 10px;
+        }
+    }
+  }
+  #notif {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: solid black;
+    background-color: rgba(74, 224, 19, 0.881);
+    padding: 15px 5px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 99;
   }
 }
+
 
 

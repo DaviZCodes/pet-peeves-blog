@@ -1,12 +1,48 @@
 @import "../styles/backgroundcolor";
+@import "../styles/fonts";
 
 .login {
     display: flex;
     height: 72vh;
     align-items: center;
     justify-content: center;
+    
+    #register, #register-text {
+        display: flex;
+        font-size: 30px;
+        color: $background-color;
+        text-decoration: none;
+        text-shadow: 3px black;
+        position: relative;
+        top: 25px;
+        font-weight: bold;
+        font-family: $font-family;
+        transform: translateY(-30px);
+    }
+
+    #register-text {
+        transition: transform 1s;
+        &:hover{
+            transform: scale(1.06) translateY(-30px);
+        }
+    }
+    
+    #question {
+        display: flex;
+        font-size: 20px;
+        color: black;
+    
+        @media (max-width: 300px) {
+            font-size: 18px;
+        }
+    }
+    
+    #wrong-password {
+        color: red;
+    }
 }
 
+//global
 .container {
     display: flex;
     flex-direction: column;
@@ -67,19 +103,6 @@
     }
 }
 
-#register2 {
-    display: flex;
-    font-size: 30px;
-    text-shadow: 3px black;
-    position: relative;
-    top: 25px;
-    transition: transform 1s;
-
-    &:hover{
-        transform: scale(1.06);
-    }
-}
-
 #submit {
     margin-top: 20px;
     padding: 10px;
@@ -100,19 +123,4 @@
     &:hover{
         transform: scale(1.06);
     }
-}
-
-#question {
-    display: flex;
-    transform: translateY(30px);
-    font-size: 20px;
-    color: black;
-
-    @media (max-width: 300px) {
-        font-size: 18px;
-    }
-}
-
-#wrong-password {
-    color: red;
 }

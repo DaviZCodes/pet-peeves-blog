@@ -1,4 +1,5 @@
 @import "../styles/fonts";
+@import "../styles/backgroundcolor";
 
 .profile {
     text-align: center;
@@ -30,4 +31,9 @@
 
 #post {
     font-size: clamp(16px, 5.3vw, 24px);
+    color: $background-color;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0.5px 1px 60px rgba(0, 0, 0, 0.1);
+    font-family: $font-family;
 }
