@@ -1,4 +1,5 @@
 @import "../styles/backgroundcolor";
+@import "../styles/fonts";
 
 .home {
     margin-top: -10px;
@@ -86,6 +87,7 @@
         grid-template-columns: 0.9fr 1.2fr;
         gap: 20px;
         margin-bottom: 26px;
+        font-family: $font-family;
 
         @media (max-width: 1000px){
             flex-direction: column;
