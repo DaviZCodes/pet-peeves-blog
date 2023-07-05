@@ -51,7 +51,7 @@ function About() {
             </p>
 
             <p id = "copyright" onClick={handleClick}>
-                Pet Peeves 2023 - info@petpeeves.com
+                Pet Peeves 2023 - info@petpeeves.com (not a real email)
             </p>
 
                 {isVisible && <p id = "do-not-pet">
