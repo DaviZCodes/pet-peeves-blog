@@ -1,9 +1,38 @@
+@import "./animations";
+$background-color: rgb(243, 166, 24);
+
 #home-header{
     font-size: clamp(16px, 5.3vw, 50px);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     padding: 0px;
     margin: 0px 0px;
-}
+    transition: color 0.36s ease-in-out;
+
+    &:hover {
+        color: $background-color;
+    }
+
+    &.header-animation {
+        @include shine-animation(2s);
+    }
+ }
+
+ .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+ #refresh-icon{
+    transform: translateY(5px) translateX(3px);
+    max-width: 20px;
+    cursor: pointer;
+
+    @media (min-width: 1201px) {
+          max-width: 30px;
+      }
+ }
 
 .posts-container {
     display: flex;

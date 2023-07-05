@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import funnyDog from "./images/funny dog.png";
 import parrot from "./images/parrot.jpeg";
 import shark from "./images/shark.jpg";
+import refreshpage from "./images/refreshpage.png"
 import axios from "axios";
 
 function Home() {
@@ -32,15 +33,24 @@ function Home() {
         document.title = "Pet Peeves!";
     }, [])
 
+    //refresh page
+    const handleRefresh = () => {
+        window.location.reload(); // Reloads the current page
+      };
+    
+
     return (
         <div className="home">
-            <h1 id = "home-header">Pet Peeves</h1>
+
+            <div className="header-container">
+                <h1 id = "home-header" placeholder="Refresh page">
+                    Pet Peeves</h1> <img src = {refreshpage} id = "refresh-icon" onClick={handleRefresh}/>
+            </div>
 
             <div className="posts-container">
-
                 <div className="post-home">
                     <div className="image">
-                        <img src = {funnyDog} id = "home-img"></img>
+                        <img src = {funnyDog} id = "home-img" className="header-animation"></img>
                     </div>
                     <div className="post-content">
                         <h1>My dog is WAY too SPOILED!</h1>

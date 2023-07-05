@@ -1,3 +1,5 @@
+$font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
 .NavBar {
     margin-top: 10px;
     margin-bottom: 25px;
@@ -17,6 +19,8 @@ header a{
     font-size: clamp(15px, 4.3vw, 30px);
     font-weight: bold;
     text-shadow: 0.5px 1px 60px rgba(0, 0, 0, 0.1);
+
+    font-family: $font-family;
 }
 
 .links {
@@ -41,6 +45,7 @@ header a{
       font-size: clamp(15px, 4vw, 30px);
       margin-right: 30px;
       font-weight: normal;
+      font-family: $font-family;
 
       &:hover {
         text-decoration: underline;
