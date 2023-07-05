@@ -1,4 +1,10 @@
-$background-color: rgb(243, 166, 24);
+@import "../styles/backgroundcolor";
+@import "../styles/fonts";
+$about-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+#whoarewe {
+    font-family: $font-family;
+}
 
 .about {
     text-align: center;
@@ -60,13 +66,8 @@ $background-color: rgb(243, 166, 24);
     z-index: -1; 
   }
 
-#intro {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: clamp(12px, 2.3vw, 16px);
-}
-
-#info {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+#intro, #info {
+    font-family: $about-font-family;
     font-size: clamp(12px, 2.3vw, 16px);
 }
 

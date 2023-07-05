@@ -1,6 +1,8 @@
+@import "../styles/fonts";
+
 .profile {
     text-align: center;
-
+    font-family: $font-family;
     h2 {
     font-weight: normal;
     font-size: clamp(20px, 5.3vw, 24px);

@@ -30,7 +30,7 @@ function About() {
     return (
         <div className="about">
             <header>
-            <h1>Who are we?</h1>
+            <h1 id = "whoarewe">Who are we?</h1>
             </header>
             <h2><div className="motto">Pet Peeves is a place for&nbsp;<div className="everyone">everyone</div></div>.</h2>
             <body>
@@ -40,7 +40,7 @@ function About() {
                 Do not wake up your sleeping pet. EVER.
             </p>
 
-            <img src = {sleepyCatGif} alt = "Sleeping GIF" id = "cat-gif" onClick={showText}></img>
+            <img src = {sleepyCatGif} alt = "Sleeping GIF" id = "cat-gif" onClick={showText} title = "Don't you dare..."></img>
 
             <p id = "info">
                 We are a company looking to bring people together through diverse means.
@@ -51,7 +51,7 @@ function About() {
             </p>
 
             <p id = "copyright" onClick={handleClick}>
-                Pet Peeves
+                Pet Peeves 2023 - info@petpeeves.com
             </p>
 
                 {isVisible && <p id = "do-not-pet">

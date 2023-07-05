@@ -1,5 +1,4 @@
-@import "./animations";
-$background-color: rgb(243, 166, 24);
+@import "../styles/backgroundcolor";
 
 #home-header{
     font-size: clamp(16px, 5.3vw, 50px);
@@ -8,13 +7,9 @@ $background-color: rgb(243, 166, 24);
     padding: 0px;
     margin: 0px 0px;
     transition: color 0.36s ease-in-out;
-
+  
     &:hover {
-        color: $background-color;
-    }
-
-    &.header-animation {
-        @include shine-animation(2s);
+      color: $background-color;
     }
  }
 
@@ -25,19 +20,34 @@ $background-color: rgb(243, 166, 24);
   }
 
  #refresh-icon{
-    transform: translateY(5px) translateX(3px);
-    max-width: 20px;
+    transform: translateY(5px) translateX(10px);
+    max-width: 26px;
     cursor: pointer;
 
     @media (min-width: 1201px) {
-          max-width: 30px;
+          max-width: 20px;
       }
  }
+
+ .page-line {
+    height: 2px;
+    background-color: #000;
+    width: 80%;
+    margin: 16px auto;
+    padding: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
+    transition: background-color 0.36s ease-in-out;
+  
+    &:hover {
+      background-color: $background-color;
+    }
+  }
 
 .posts-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     max-width: 90%;
     padding: 50px;
     margin: 0 auto;
@@ -54,6 +64,7 @@ $background-color: rgb(243, 166, 24);
 .post-home {
     display: flex;
     justify-content: center;
+    align-items: center;
     grid-template-columns: 0.9fr 1.2fr;
     gap: 20px;
     margin-bottom: 20px;
@@ -68,6 +79,8 @@ $background-color: rgb(243, 166, 24);
 }
 
 .info {
+    display: flex;
+    align-items: center;
     margin: 0px 0;
     display: flex;
     gap: 20px;

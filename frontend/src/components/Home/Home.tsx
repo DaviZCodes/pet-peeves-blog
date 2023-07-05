@@ -43,14 +43,17 @@ function Home() {
         <div className="home">
 
             <div className="header-container">
-                <h1 id = "home-header" placeholder="Refresh page">
-                    Pet Peeves</h1> <img src = {refreshpage} id = "refresh-icon" onClick={handleRefresh}/>
+                <h1 id = "home-header" title="Thank you for being here!">
+                    Pet Peeves</h1> <img src = {refreshpage} id = "refresh-icon" onClick={handleRefresh}  alt = "refresh page icon"
+                    title="Refresh page"/>
             </div>
+
+            <div className="page-line"></div>
 
             <div className="posts-container">
                 <div className="post-home">
                     <div className="image">
-                        <img src = {funnyDog} id = "home-img" className="header-animation"></img>
+                        <img src = {funnyDog} id = "home-img"></img>
                     </div>
                     <div className="post-content">
                         <h1>My dog is WAY too SPOILED!</h1>

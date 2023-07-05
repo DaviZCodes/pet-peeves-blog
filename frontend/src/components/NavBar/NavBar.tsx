@@ -1,7 +1,7 @@
 import {useState, useEffect, useContext} from 'react';
 import {Link, useNavigate} from "react-router-dom";  
 import axios from 'axios';
-import './NavBar.scss';
+import "./NavBar.scss";
 import { UserContext } from '../UserContext/UserContext';
 
 function NavBar() {
