@@ -19,7 +19,7 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 </ul>
 
 ### Sneak peek
-![Home]()
-![Create a post]() 
+![Home](https://i.imgur.com/Nf7j7Yc.png)
+![Create a post](https://i.imgur.com/tdmcStI.png) 
 
 
