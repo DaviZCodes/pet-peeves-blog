@@ -1,20 +1,21 @@
-import React, {useEffect, useContext, useState} from "react";
+import {useEffect, useContext, useState} from "react";
 import axios from "axios";
-import "./Post.scss"
+import "./PostPage.scss"
 import { UserContext } from "../UserContext/UserContext";
 import { useNavigate } from "react-router";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"
 
-function Post() {
+function PostPage() {
 
     //user can only access /post if logged in
     const { userInfo } = useContext(UserContext);
     const navigate = useNavigate();
 
-    const [showPassedCharLimitText, setShowPassedCharLimitText] = useState<boolean>(false);
+    const [showPassedContentCharLimitText, setShowContentPassedCharLimitText] = useState<boolean>(false);
     const [showYouMustFillText, setShowYouMustFillText] = useState<boolean>(false);
     const [title, setTitle] = useState<string>("");
+    const [showPassedTitleCharLimitText, setShowPassedTitleCharLimitText] = useState<boolean>(false);
     const [image, setImage] = useState<FileList>();
     const [selectedFileNameText, setSelectedFileNameText] = useState<string>("");
     const [quillContent, setQuillContent] = useState<string>("");
@@ -46,7 +47,7 @@ function Post() {
         }
 
         //if passed character limit
-        if (showPassedCharLimitText){
+        if (showPassedContentCharLimitText){
             return;
         }
 
@@ -62,6 +63,8 @@ function Post() {
             }
              
             const response = await axios.post("http://localhost:8019/posts", data);
+            navigate("/");
+            return;
         }
 
         catch (error) { 
@@ -84,7 +87,11 @@ function Post() {
         };
     
       }, [showYouMustFillText]);
-        
+    
+      const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(event.target.value);
+        setShowPassedTitleCharLimitText(event.target.value.length > 80);
+      };
     
       const handleImageChange = (event: { target: any; }) => {
         const fileInput = event.target;
@@ -101,7 +108,7 @@ function Post() {
     const handleQuillChange = (content:string) => {
         setQuillContent(content);
         //display error if char limit is passed
-        setShowPassedCharLimitText(content.length > 2000)
+        setShowContentPassedCharLimitText(content.length > 2000)
     }
 
     //user can only access /post if logged in
@@ -120,7 +127,12 @@ function Post() {
             <form onSubmit={createPost}>
                 <div className="user-input">
                     <input type = "title" id = "title" value = {title} placeholder="Title of your post" 
-                    onChange={(event) => {setTitle(event.target.value)}} required></input>
+                    onChange={handleTitleChange} required></input> 
+                    {showPassedTitleCharLimitText && (
+                    <>
+                    <p id = "passed-char"> You passed the character limit.</p>
+                    </>
+                )}
 
                     <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange}></input>
                     <label htmlFor="file-input"  id="image" className="custom-file-label">{selectedFileNameText || "Choose a file"}</label>
@@ -130,7 +142,7 @@ function Post() {
                 </div>
 
                 <p id = "char-max">char max: 2000</p>
-                {showPassedCharLimitText && (
+                {showPassedContentCharLimitText && (
                     <>
                     <p id = "passed-char"> You passed the character limit.</p>
                     </>
@@ -150,4 +162,4 @@ function Post() {
     );
 }
 
-export default Post;
+export default PostPage ;

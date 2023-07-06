@@ -1,19 +1,75 @@
 import "./Home.scss"
-import React, {useEffect} from "react";
+import HomePost from "../HomePost/HomePost";
+import {useState, useEffect} from "react";
 import funnyDog from "./images/funny dog.png";
 import parrot from "./images/parrot.jpeg";
 import shark from "./images/shark.jpg";
+import refreshpage from "./images/refreshpage.png"
+import axios from "axios";
+
+interface Post {
+    title: string;
+    content: string;
+    cover: string;
+    createdAt: string;
+  }
 
 function Home() {
+    //state for posts
+    const [posts, setPosts] = useState<Post[]>([]);
+
+    //fetch all the new posts
+    useEffect(() => {
+        const fetchPosts = async (): Promise<void> => {
+            try {
+                const response = await axios.get("http://localhost:8019/posts");
+
+                if (response.status === 200) {
+                    setPosts(response.data);
+                    console.log("these are the posts", response.data);
+                }
+            }
+            catch(error) {
+                console.log(error);
+            }
+        };
+
+        fetchPosts();
+    }, [])
+
     //change tab title
     useEffect(() => {
         document.title = "Pet Peeves!";
     }, [])
 
+    //refresh page
+    const handleRefresh = () => {
+        window.location.reload(); // Reloads the current page
+      };
+    
+
     return (
         <div className="home">
+
+            <div className="header-container">
+                <h1 id = "home-header" title="Thank you for being here!">
+                    Pet Peeves</h1> <img src = {refreshpage} id = "refresh-icon" onClick={handleRefresh}  alt = "refresh page icon"
+                    title="Refresh page"/>
+            </div>
+            <div className="page-line"></div>
+
             <div className="posts-container">
-                <div className="post-home">
+                {/* {posts.length > 0 && posts.map(post => (
+                    <HomePost
+                    title={post.title}
+                    createdAt={post.createdAt}
+                    content={post.content}
+                    cover={post.cover}
+                />
+                ))}   */}
+
+                
+                    <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
                     </div>
@@ -56,6 +112,7 @@ function Home() {
                         <p id = "summary">Hey! I am a millionaire from Dubai. I have bought a giant aquarium. I was just wondering if sharks like to be pet like dogs?</p>
                     </div>
                 </div>
+
             </div>
         </div>
     );

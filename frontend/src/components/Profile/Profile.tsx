@@ -34,7 +34,7 @@ function Profile() {
                 <img src = {sadCat} alt = "Crying cat" id = "sad-cat"></img>
             </Link>
             
-            <p id = "no-posts">You currently have no posts. Once you create a  <Link to = "/post" id = "post">&nbsp;post </Link>, it will appear here.</p>
+            <p id = "no-posts">You currently have no posts. Once you create a&nbsp;<Link to = "/post" id = "post">post </Link>, it will appear here.</p>
             </>
             )
 }

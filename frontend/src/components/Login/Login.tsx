@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import {useState, useEffect, useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import axios from "axios";
@@ -58,7 +58,7 @@ function Login() {
     return (
         <div className="login">
             <div className="container">
-            <h1>Login</h1>
+            <h1 id = "login-text">Login</h1>
             <form action="POST">
                 <input type="username" id = "username" placeholder="username" onChange={(element) => {setUsername(element.target.value);}}></input>
                 <input type="password" id = "password" placeholder="password" onChange={(element) => {setPassword(element.target.value);}}></input>
@@ -70,7 +70,7 @@ function Login() {
             <Link to = "/register" id = "register">
             <h3 id = "question">Don't have an account?</h3>
             </Link>
-            <Link to = "/register" id = "register2"> Register </Link>
+            <Link to = "/register" id = "register-text"> Register </Link>
 
             {/* testing frontend */}
             <br></br>

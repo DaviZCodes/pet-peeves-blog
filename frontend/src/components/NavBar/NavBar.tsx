@@ -1,7 +1,7 @@
-import React, {useState, useEffect, useContext} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {Link, useNavigate} from "react-router-dom";  
 import axios from 'axios';
-import './NavBar.scss';
+import "./NavBar.scss";
 import { UserContext } from '../UserContext/UserContext';
 
 function NavBar() {
@@ -28,12 +28,11 @@ function NavBar() {
 
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await axios.get('http://localhost:8019/user', {
+        const response = await axios.get("http://localhost:8019/user", {
           withCredentials: true, //use cookies to check if user is logged in
         });
 
         if (response.status === 200) {
-          console.log("Working");
           const user = response.data;
           setUserInfo(user.username);
           //setUsername(user.username);
@@ -42,7 +41,7 @@ function NavBar() {
 
       } 
       catch (error) {
-        console.log("Failed");
+        console.log("Failed to logisn");
         console.log(error);
       }
     };
