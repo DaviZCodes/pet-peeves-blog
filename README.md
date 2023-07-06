@@ -15,7 +15,7 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
   <li> Register an account </li>
   <li> Login with your new account </li>
   <li> Create a post </li>
-  <img width="1026" alt="Screen Shot 2023-07-05 at 11 40 44 PM" src="https://github.com/DaviZCodes/pet-peeves-blog/assets/52458432/e9d09f52-e39f-4ca7-922d                       1b54cd89101b">
+  ![Create a post]([/assets/images/tux.png](https://github.com/DaviZCodes/pet-peeves-blog/assets/52458432/e9d09f52-e39f-4ca7-922d1b54cd89101b)https://github.com/DaviZCodes/pet-peeves-blog/assets/52458432/e9d09f52-e39f-4ca7-922d1b54cd89101b) 
   <li> Enjoy! </li>
 </ul>
 
