@@ -129,13 +129,14 @@
     .post-content {
         display: flex;
         margin: 0;
+        margin-left: 2%;
         font-size: clamp(12px, 3vw, 20px);
         flex-direction: column;
         cursor: pointer;
     }
 
     #summary {
-        max-width: 80%;
+        max-width: 100%;
         cursor: pointer;
     }
 }

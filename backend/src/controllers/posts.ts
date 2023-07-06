@@ -20,7 +20,11 @@ export const createPost = async (req: Request, res: Response) => {
             title,
             content,
             cover: newImagePath, 
-        })
+        }, 
+        {
+          withCredentials: true, //allow cookies 
+      });
+
         return res.status(200).json(postDocument).end();
       }
 

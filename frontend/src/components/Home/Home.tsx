@@ -1,4 +1,5 @@
 import "./Home.scss"
+import HomePost from "../HomePost/HomePost";
 import {useState, useEffect} from "react";
 import funnyDog from "./images/funny dog.png";
 import parrot from "./images/parrot.jpeg";
@@ -6,9 +7,16 @@ import shark from "./images/shark.jpg";
 import refreshpage from "./images/refreshpage.png"
 import axios from "axios";
 
+interface Post {
+    title: string;
+    content: string;
+    cover: string;
+    createdAt: string;
+  }
+
 function Home() {
     //state for posts
-    const [posts, setPosts] = useState();
+    const [posts, setPosts] = useState<Post[]>([]);
 
     //fetch all the new posts
     useEffect(() => {
@@ -17,7 +25,8 @@ function Home() {
                 const response = await axios.get("http://localhost:8019/posts");
 
                 if (response.status === 200) {
-                    console.log("potato", response.data);
+                    setPosts(response.data);
+                    console.log("these are the posts", response.data);
                 }
             }
             catch(error) {
@@ -47,11 +56,20 @@ function Home() {
                     Pet Peeves</h1> <img src = {refreshpage} id = "refresh-icon" onClick={handleRefresh}  alt = "refresh page icon"
                     title="Refresh page"/>
             </div>
-
             <div className="page-line"></div>
 
             <div className="posts-container">
-                <div className="post-home">
+                {posts.length > 0 && posts.map(post => (
+                    <HomePost
+                    title={post.title}
+                    createdAt={post.createdAt}
+                    content={post.content}
+                    cover={post.cover}
+                />
+                ))}  
+
+                {/* 
+                    <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
                     </div>
@@ -93,7 +111,7 @@ function Home() {
                         </p>
                         <p id = "summary">Hey! I am a millionaire from Dubai. I have bought a giant aquarium. I was just wondering if sharks like to be pet like dogs?</p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
