@@ -7,7 +7,7 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 <ol>
   <li> Clone the repository </li>
   <li> Run the frontend - $ cd frontend & $ npm start </li>
-  <li> Run the backend $ cd backend $ npm start </li>
+  <li> Run the backend $ cd backend & $ npm start </li>
 </ol>
 
 ## Now feel free to use the website!
