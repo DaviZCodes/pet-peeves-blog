@@ -15,9 +15,9 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
   <li> Register an account </li>
   <li> Login with your new account </li>
   <li> Create a post </li>
-  ![Create a post](https://github.com/DaviZCodes/pet-peeves-blog/assets/52458432/b715cf7d-8abf-476e-bb77-c433c13d4798) 
   <li> Enjoy! </li>
 </ul>
 
+![Create a post](https://github.com/DaviZCodes/pet-peeves-blog/assets/52458432/b715cf7d-8abf-476e-bb77-c433c13d4798) 
 
 
