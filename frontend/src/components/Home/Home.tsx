@@ -59,16 +59,16 @@ function Home() {
             <div className="page-line"></div>
 
             <div className="posts-container">
-                {posts.length > 0 && posts.map(post => (
+                {/* {posts.length > 0 && posts.map(post => (
                     <HomePost
                     title={post.title}
                     createdAt={post.createdAt}
                     content={post.content}
                     cover={post.cover}
                 />
-                ))}  
+                ))}   */}
 
-                {/* 
+                
                     <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
@@ -111,7 +111,8 @@ function Home() {
                         </p>
                         <p id = "summary">Hey! I am a millionaire from Dubai. I have bought a giant aquarium. I was just wondering if sharks like to be pet like dogs?</p>
                     </div>
-                </div> */}
+                </div>
+
             </div>
         </div>
     );
