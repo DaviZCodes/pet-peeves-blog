@@ -125,12 +125,11 @@
         }
     }
   }
-  #notif {
+  #notif-in, #notif-out {
     position: fixed;
     bottom: 20px;
     right: 20px;
     color: solid black;
-    background-color: rgba(89, 226, 39, 0.96);
     border-color: solid black;
     border: solid;
     border-width: 1px;
@@ -139,6 +138,14 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 99;
   }
+}
+
+#notif-in {
+  background-color: rgba(89, 226, 39, 0.96);
+}
+
+#notif-out {
+  background-color: rgba(252, 186, 55, 0.96);
 }
 
 

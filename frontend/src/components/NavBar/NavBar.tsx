@@ -117,10 +117,10 @@ function NavBar() {
             
             {/* notifications */}
             {showLoginNotification && !showLogoutNotification && (
-                  <p id = "notif">Successfully logged in</p>
+                  <p id = "notif-in">Successfully logged in</p>
              )}
             {showLogoutNotification && (
-                  <p id = "notif">Successfully logged out</p>
+                  <p id = "notif-out">Successfully logged out</p>
              )}
 
         </div>
