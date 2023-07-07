@@ -68,7 +68,7 @@ function Home() {
                 />
                 ))}   */}
 
-                
+
                     <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
