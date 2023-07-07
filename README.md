@@ -23,3 +23,12 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 ![Create a post](https://i.imgur.com/tdmcStI.png) 
 
 
+### Image credits:
+<ul>
+  <li> Dog Home Page - https://www.cardmore.com/products/relaxing-pup-humor-birthday-card</li>
+  <li> Parrot Home Page - https://en.wikipedia.org/wiki/Companion_parrot </li>
+  <li> Shark Home Page - https://www.discoverwildlife.com/animal-facts/fish/is-there-really-no-such-thing-as-a-fish/</li>
+  <li> Cat Sleeping GIF - https://www.deviantart.com/oogle-the-odd/art/Sleeping-cat-gif-559327675</li>
+  <li> Crying Cat - https://www.redbubble.com/i/sticker/crying-cat-meme-by-ameliamarie03/36224681.EJUG5#&gid=1&pid=3</li>
+</ul>
+
