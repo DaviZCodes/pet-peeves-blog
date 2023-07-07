@@ -41,8 +41,7 @@ function PostPage() {
     async function createPost(event: { preventDefault: () => void; }) {
         event.preventDefault();
         //if not all fields are filled out
-        const titleInput = document.getElementById("title") as HTMLInputElement;
-        if (!quillContent || !titleInput.value) {
+        if (!quillContent || !title || (image === "")) {
           setShowYouMustFillText(true);
           return;
         }
@@ -93,17 +92,9 @@ function PostPage() {
         setShowPassedTitleCharLimitText(event.target.value.length > 50);
       };
     
-      const handleImageChange = (event: { target: any; }) => {
-        const fileInput = event.target;
-        if (fileInput.files && fileInput.files.length > 0) {
-          setImage(fileInput.files);
-          setSelectedFileNameText(fileInput.files[0].name);
-        } 
-        else {
-          setImage("");
-          setSelectedFileNameText("");
-          setShowYouMustFillText(true);
-        }
+      const handleImageChange = (event: any) => {
+          setImage(event.target.files);
+          setSelectedFileNameText(event.target.files[0].name);
       };
 
     const handleQuillChange = (content:string) => {

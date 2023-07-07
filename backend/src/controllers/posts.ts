@@ -1,13 +1,12 @@
 import {Request, Response} from "express";
 import fs from "fs";
-import multer from "multer";
-const uploadMiddleware = multer({dest:"uploads/"});
 import {PostModel} from "../database/posts";
 
 export const createPost = async (req: Request, res: Response) => {
     try {
-
-      if (req.file) {
+      if (!req.file) {
+        return res.sendStatus(400);
+      }
         const { originalname, path } = req.file;
         const parts = originalname.split(".");
         const ext = parts[parts.length -1];
@@ -20,13 +19,13 @@ export const createPost = async (req: Request, res: Response) => {
             title,
             content,
             cover: newImagePath, 
-        }, 
-        {
-          withCredentials: true, //allow cookies 
-      });
+        },
+        );
+
+        //credientials include will result into creating a second empty post after create post
 
         return res.status(200).json(postDocument).end();
-      }
+
 
     }
      catch (error) {
