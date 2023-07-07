@@ -4,7 +4,7 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import PostPage from './components/PostPage/Post';
+import PostPage from './components/PostPage/PostPage';
 import Profile from './components/Profile/Profile';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { UserContextProvider } from './components/UserContext/UserContext';

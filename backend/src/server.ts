@@ -17,6 +17,7 @@ app.use(cors({
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyparser.json());
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 
 //running the server

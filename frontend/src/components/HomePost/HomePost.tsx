@@ -17,8 +17,8 @@ const HomePost: React.FC<HomePostProps> = ({ title, createdAt, content, cover })
         <div className="post-content">
             <h1>{title}</h1>
             <p className="info">
-            <a className="author">Author</a>
-            <time>{format(new Date(createdAt), "MMM d, yyyy")}</time>
+                <a className="author">Author</a>
+                <time>{format(new Date(createdAt), "MMM d, yyyy")}</time>
             </p>
             <p id="summary" dangerouslySetInnerHTML={{ __html: content }}/>
         </div>
