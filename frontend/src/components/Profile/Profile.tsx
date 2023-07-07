@@ -3,16 +3,16 @@ import "./Profile.scss"
 import { UserContext } from '../UserContext/UserContext';
 import sadCat from "./images/cat sad.png"
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Profile() {
     const navigate = useNavigate();
     const {userInfo, setUserInfo} = useContext(UserContext);
     const [showCatAndPost, setShowCatAndPost] = useState<boolean>(true);
 
-    // useEffect(() => {
+    // get Posts
     //     setNoPostsText("");
     //     setShowCat(false);
-    // }, [])
 
     useEffect(() =>{
         //change title of tab
