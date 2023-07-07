@@ -67,11 +67,11 @@
         input[type="title"] {
             height: 50px;
         }
-    
+
         #react-quill {
             height: 300px; 
         }
-    
+
         input[type="file"] {
             display: none;
           }
@@ -90,13 +90,18 @@
       &:hover {
         background-color: darkorange; 
       }
-    }
     
+        #react-quill {
+            height: 300px; 
+        }
+    }
+
     #char-max {
         font-size: 10px;
     }
     
     #passed-char, #insufficient-info {
+        margin-top: 30px;
         color: crimson;
     }
     
