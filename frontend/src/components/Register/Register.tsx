@@ -29,9 +29,7 @@ function Register() {
     }
 
     //change tab title
-    useEffect(() => {
-        document.title = "Register!"
-    }, [])
+    document.title = "Register!"
 
     return (
         <div className="register-page">

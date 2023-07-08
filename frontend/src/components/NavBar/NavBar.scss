@@ -19,14 +19,18 @@
       font-size: clamp(15px, 4.3vw, 30px);
       font-weight: bold;
       text-shadow: 0.5px 1px 60px rgba(0, 0, 0, 0.1);
-      box-shadow: 1px 0.1px 2px 1px rgba(0, 0, 1, 0.11);
+      box-shadow: 1px 0.1px 2px 1px rgba(236, 176, 27, 0.22);
       border-radius:1px;
       font-family: $font-family;
+      transition: color 0.36s ease-in-out;
+      transition: box-shadow 0.36s ease-in-out;
   
       &:hover{
-        text-decoration: underline;
-        text-decoration-color: $background-color;
+        // text-decoration: underline;
+        // text-decoration-color: $background-color;
         padding: 10px 0px;
+        color: $background-color;
+        box-shadow: 1px 0.1px 2px 1px rgba(236, 176, 27, 0.33);
       }
     }
 
@@ -62,6 +66,7 @@
       &:hover {
         text-decoration: underline;
         text-decoration-color: rgba(250, 6, 6, 0.9);
+        padding: 10px 0px;
       }
      }
   }
@@ -125,12 +130,11 @@
         }
     }
   }
-  #notif {
+  #notif-in, #notif-out {
     position: fixed;
     bottom: 20px;
     right: 20px;
     color: solid black;
-    background-color: rgba(89, 226, 39, 0.96);
     border-color: solid black;
     border: solid;
     border-width: 1px;
@@ -139,6 +143,14 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 99;
   }
+}
+
+#notif-in {
+  background-color: rgba(89, 226, 39, 0.96);
+}
+
+#notif-out {
+  background-color: rgba(252, 186, 55, 0.96);
 }
 
 

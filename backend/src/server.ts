@@ -37,3 +37,4 @@ mongoose.connection.on("error", (error: Error) => {
 })
 
 app.use("/", router());
+app.use("/uploads", express.static("uploads"));

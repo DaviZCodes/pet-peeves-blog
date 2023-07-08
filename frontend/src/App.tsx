@@ -4,8 +4,10 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import PostPage from './components/PostPage/Post';
+import PostPage from './components/PostPage/PostPage';
 import Profile from './components/Profile/Profile';
+import SinglePostPage from "./components/SinglePostPage/SinglePostPage";
+import EditPost from './components/EditPost/EditPost';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { UserContextProvider } from './components/UserContext/UserContext';
 
@@ -23,6 +25,8 @@ function App() {
             <Route path="/register" element = {<Register/>} />
             <Route path="/post" element = {<PostPage/>} />
             <Route path="/profile" element = {<Profile/>} />
+            <Route path="/posts/:id" element = {<SinglePostPage/>} />
+            <Route path="/edit/:id" element = {<EditPost/>} />
           </Routes>
         </header>
       </div>

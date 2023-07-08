@@ -1,17 +1,16 @@
 import "./Home.scss"
 import HomePost from "../HomePost/HomePost";
 import {useState, useEffect} from "react";
-import funnyDog from "./images/funny dog.png";
-import parrot from "./images/parrot.jpeg";
-import shark from "./images/shark.jpg";
 import refreshpage from "./images/refreshpage.png"
 import axios from "axios";
 
 interface Post {
+    _id: string;
     title: string;
     content: string;
     cover: string;
     createdAt: string;
+    author: string;
   }
 
 function Home() {
@@ -26,7 +25,6 @@ function Home() {
 
                 if (response.status === 200) {
                     setPosts(response.data);
-                    console.log("these are the posts", response.data);
                 }
             }
             catch(error) {
@@ -38,9 +36,7 @@ function Home() {
     }, [])
 
     //change tab title
-    useEffect(() => {
-        document.title = "Pet Peeves!";
-    }, [])
+    document.title = "Pet Peeves!";
 
     //refresh page
     const handleRefresh = () => {
@@ -59,17 +55,19 @@ function Home() {
             <div className="page-line"></div>
 
             <div className="posts-container">
-                {/* {posts.length > 0 && posts.map(post => (
+                {posts.length > 0 && posts.map((post, index) => (
                     <HomePost
+                    key={index}
+                    _id = {post._id}
                     title={post.title}
                     createdAt={post.createdAt}
                     content={post.content}
                     cover={post.cover}
+                    author={post.author}
                 />
-                ))}   */}
+                ))}   
 
-                
-                    <div className="post-home">
+                    {/* <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
                     </div>
@@ -111,7 +109,7 @@ function Home() {
                         </p>
                         <p id = "summary">Hey! I am a millionaire from Dubai. I have bought a giant aquarium. I was just wondering if sharks like to be pet like dogs?</p>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         </div>

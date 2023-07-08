@@ -2,7 +2,7 @@ import {useEffect, useContext, useState} from "react";
 import axios from "axios";
 import "./PostPage.scss"
 import { UserContext } from "../UserContext/UserContext";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"
 
@@ -16,9 +16,10 @@ function PostPage() {
     const [showYouMustFillText, setShowYouMustFillText] = useState<boolean>(false);
     const [title, setTitle] = useState<string>("");
     const [showPassedTitleCharLimitText, setShowPassedTitleCharLimitText] = useState<boolean>(false);
-    const [image, setImage] = useState<FileList>();
+    const [image, setImage] = useState<string>("");
     const [selectedFileNameText, setSelectedFileNameText] = useState<string>("");
     const [quillContent, setQuillContent] = useState<string>("");
+    const [redirect, setRedirect] = useState<boolean>(false);
 
     const modules = {
         toolbar: [
@@ -40,8 +41,7 @@ function PostPage() {
     async function createPost(event: { preventDefault: () => void; }) {
         event.preventDefault();
         //if not all fields are filled out
-        const titleInput = document.getElementById("title") as HTMLInputElement;
-        if (!quillContent || !titleInput.value) {
+        if (!quillContent || !title || (image === "")) {
           setShowYouMustFillText(true);
           return;
         }
@@ -51,20 +51,19 @@ function PostPage() {
             return;
         }
 
-        console.log(image);
-
         try {
             const data = new FormData();
             data.set("title", title);
             data.set("content", quillContent);
+            data.set("author", userInfo!);
+    
 
-            if (image) {
-                data.set("image", image[0]); //ensure only one image is passed
-            }
+            data.set("image", image?.[0]); //ensure only one image is passed
              
             const response = await axios.post("http://localhost:8019/posts", data);
-            navigate("/");
-            return;
+            if (response.status === 200) {
+                setRedirect(true);
+            }
         }
 
         catch (error) { 
@@ -93,22 +92,15 @@ function PostPage() {
         setShowPassedTitleCharLimitText(event.target.value.length > 80);
       };
     
-      const handleImageChange = (event: { target: any; }) => {
-        const fileInput = event.target;
-        if (fileInput.files && fileInput.files.length > 0) {
-          setImage(fileInput.files);
-          setSelectedFileNameText(fileInput.files[0].name);
-        } 
-        else {
-          setImage(undefined);
-          setSelectedFileNameText("");
-        }
+      const handleImageChange = (event: any) => {
+          setImage(event.target.files);
+          setSelectedFileNameText(event.target.files[0].name);
       };
 
     const handleQuillChange = (content:string) => {
         setQuillContent(content);
         //display error if char limit is passed
-        setShowContentPassedCharLimitText(content.length > 2000)
+        setShowContentPassedCharLimitText(content.length > 5000)
     }
 
     //user can only access /post if logged in
@@ -121,6 +113,11 @@ function PostPage() {
         }
     }, [])
 
+    //redirect page
+    if (redirect) {
+        return <Navigate to = {"/"}/>
+    }
+
     return (
         <div className="create-post">
             <h1>Create a Post</h1>
@@ -130,18 +127,18 @@ function PostPage() {
                     onChange={handleTitleChange} required></input> 
                     {showPassedTitleCharLimitText && (
                     <>
-                    <p id = "passed-char"> You passed the character limit.</p>
+                    <p id = "passed-char"> You passed the character limit of 80.</p>
                     </>
                 )}
 
-                    <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange}></input>
+                    <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange} required></input>
                     <label htmlFor="file-input"  id="image" className="custom-file-label">{selectedFileNameText || "Choose a file"}</label>
 
                     <ReactQuill id = "react-quill" value = {quillContent} modules={modules} formats={formats}
                     onChange={handleQuillChange} placeholder="Write your post info here"/>
                 </div>
 
-                <p id = "char-max">char max: 2000</p>
+                <p id = "char-max">char max: 5000</p>
                 {showPassedContentCharLimitText && (
                     <>
                     <p id = "passed-char"> You passed the character limit.</p>
