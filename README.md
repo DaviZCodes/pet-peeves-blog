@@ -25,13 +25,13 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 
 ### Technical features 
 <ul>
-  <li> Passwords are 60+ characters/numbers hashed with random text/hex/numbers - nearly impossible to trace back</li>
+  <li> Passwords are 64 characters/numbers long, hashed with random text/hex/numbers - nearly impossible to trace back</li>
 </ul>
 
 
 ### Image credits:
 <ul>
-  <li> Dog Home Page - https://www.cardmore.com/products/relaxing-pup-humor-birthday-card</li>
+  <li> Dog Home Page - https://redbeardedmarketing.com/wp-content/uploads/2021/04/funny-dogs.png</li>
   <li> Parrot Home Page - https://en.wikipedia.org/wiki/Companion_parrot </li>
   <li> Shark Home Page - https://www.discoverwildlife.com/animal-facts/fish/is-there-really-no-such-thing-as-a-fish/</li>
   <li> Cat Sleeping GIF - https://www.deviantart.com/oogle-the-odd/art/Sleeping-cat-gif-559327675</li>
