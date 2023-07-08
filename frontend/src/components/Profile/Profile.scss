@@ -4,36 +4,124 @@
 .profile {
     text-align: center;
     font-family: $font-family;
-    h2 {
-    font-weight: normal;
-    font-size: clamp(20px, 5.3vw, 24px);
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+
+
+    #post-title {
+        font-size: clamp(20px, 5.3vw, 24px);
     }
 
     p {
-        font-size: clamp(16px, 5.3vw, 24px);
+        font-size: clamp(16px, 3vw, 24px);
+        font-weight: normal;
     }
-}
 
-#sad-cat {
-    max-width: 35%;
-    margin-top: 10px;
-    height: auto;
-    object-fit: cover;
-}
+    #edit-post {
+        margin: 10px 10px;
+        text-decoration: underline;
+        color: purple;
+    }
 
-#no-posts {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    height: 10vh;
-}
+    .page-line {
+        background-color: rgb(15, 15, 15);
+        width: 80%;
+        height: 2px;
+        margin: 16px auto;
+        padding: 2px;
+        border-radius: 10px;
+        transition: background-color 0.36s ease-in-out;
 
-#post {
-    font-size: clamp(16px, 5.3vw, 24px);
-    color: $background-color;
-    text-decoration: none;
-    font-weight: bold;
-    text-shadow: 0.5px 1px 60px rgba(0, 0, 0, 0.1);
-    font-family: $font-family;
+        &:hover {
+        background-color: $background-color;
+        }
+    }
+
+
+    #sad-cat {
+        max-width: 35%;
+        margin-top: 10px;
+        height: auto;
+        object-fit: cover;
+    }
+
+    #no-posts {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        height: 10vh;
+    }
+
+    #post {
+        color: $background-color;
+        text-decoration: none;
+        font-weight: bold;
+        text-shadow: 0.5px 1px 60px rgba(0, 0, 0, 0.1);
+        font-family: $font-family;
+    }
+
+    #profile-post-img {
+        max-height: 60vh;
+
+        @media (max-width: 600px) {
+            max-height: 39vh;
+        }
+
+        @media (max-width: 500px) {
+            max-height: 30vh;
+        }
+
+        @media (max-width: 300px) {
+            max-height: 20vh;
+        }
+    }
+
+    .post-content {
+        #summary {
+            color: #020202;
+            line-height: 1.5;
+            padding: 50px;
+            text-align:justify;
+            font: $font-family;
+            margin: 0px 200px;
+            
+            a {
+              color: #007bff;
+              text-decoration: none;
+              
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+    
+            @media (max-width: 1200px) {
+                margin: 0px 100px;
+                padding: 40px;
+            }
+    
+            @media (max-width: 900px) {
+                margin: 0px 60px;
+                padding: 30px;
+            }
+    
+            @media (max-width: 800px) {
+                margin: 0px 36px;
+                padding: 20px;
+            }
+    
+            @media (max-width: 700px) {
+                margin: 0px 2px;
+                padding: 10px;
+            }
+    
+            @media (max-width: 500px) {
+                margin: 0px 0px;
+                padding: 0px;
+            }
+          }
+    }
+
 }
