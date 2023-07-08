@@ -64,14 +64,13 @@ export const createPost = async (req: Request, res: Response) => {
       return res.sendStatus(400);
     }
   };
-
+  
   export const getUserPosts = async (req: Request, res: Response) => {
     try {
       const { userId } = req.params;
-      console.log("User ID is", userId);
       const decodedUserId = decodeURIComponent(userId); // Decode the user ID
   
-      const userPosts = await PostModel.find({ author: decodedUserId }).exec(); // Add .exec() to the query
+      const userPosts = await PostModel.find({ author: decodedUserId });
   
       return res.status(200).json(userPosts);
     } catch (error) {

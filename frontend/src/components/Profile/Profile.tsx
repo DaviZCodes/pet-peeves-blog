@@ -20,22 +20,22 @@ function Profile() {
     const [showCatAndPost, setShowCatAndPost] = useState<boolean>(true);
     const [posts, setPosts] = useState<Post[]>([]);
 
-    //fetch all posts from user to profile
+   //fetch all posts by Saad Ali to profile
     useEffect(() => {
         const fetchUserPosts = async (): Promise<void> => {
-          try {
-            const response = await axios.get(`http://localhost:8019/user-posts/${userInfo}`);
-      
+        try {
+            const response = await axios.get(`http://localhost:8019/user-posts/${encodeURIComponent(userInfo!)}`);
+        
             if (response.status === 200) {
-              setPosts(response.data);
-              setShowCatAndPost(false);
+            setPosts(response.data);
+            setShowCatAndPost(false);
             }
-          } catch (error) {
+        } catch (error) {
             console.log(error);
-          }
+        }
         };
         fetchUserPosts();
-      }, []);
+    }, [userInfo]);
 
 
     useEffect(() => {
