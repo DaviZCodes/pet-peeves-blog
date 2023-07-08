@@ -67,13 +67,14 @@ export const createPost = async (req: Request, res: Response) => {
   
   export const getUserPosts = async (req: Request, res: Response) => {
     try {
-      const { userId } = req.params;
-      const decodedUserId = decodeURIComponent(userId); // Decode the user ID
+      const { username } = req.params;
+      const decodedUserId = decodeURIComponent(username); // Decode the user ID
   
       const userPosts = await PostModel.find({ author: decodedUserId });
   
       return res.status(200).json(userPosts);
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
       return res.sendStatus(400);
     }

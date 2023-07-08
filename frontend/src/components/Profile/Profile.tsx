@@ -19,23 +19,29 @@ function Profile() {
     const { userInfo } = useContext(UserContext);
     const [showCatAndPost, setShowCatAndPost] = useState<boolean>(true);
     const [posts, setPosts] = useState<Post[]>([]);
+    const [fetchingPostsText, setFetchingPostsText] = useState<boolean>(true);
 
-   //fetch all posts by Saad Ali to profile
+   //fetch all of your own posts to profile
     useEffect(() => {
         const fetchUserPosts = async (): Promise<void> => {
         try {
-            const response = await axios.get(`http://localhost:8019/user-posts/${encodeURIComponent(userInfo!)}`);
+
+            const response = await axios.get(`http://localhost:8019/user-posts/${userInfo!}`);
         
             if (response.status === 200) {
-            setPosts(response.data);
-            setShowCatAndPost(false);
+                setPosts(response.data);
+
+                if (posts.length != 0) {
+                    setShowCatAndPost(false);
+                }
             }
-        } catch (error) {
+        } 
+        catch (error) {
             console.log(error);
         }
         };
         fetchUserPosts();
-    }, [userInfo]);
+    }, );
 
 
     useEffect(() => {
@@ -54,11 +60,23 @@ function Profile() {
             <h2>Below are your posts:</h2>
             {!showCatAndPost && (
                 <>
+                <div className="page-line"></div>
                     {posts.map((post) => (
                     <div key={post._id} className="post">
-                        <h3>{post.title}</h3>
-                        <p>{post.content}</p>
-                        <img src = {post.cover}></img>
+
+                        <h1 id = "post-title">{post.title}</h1>
+                        {userInfo === post.author && (
+                        <div>
+                            <Link to = {`/edit/${post._id}`} id = "edit-post">Edit Post</Link>
+                        </div>
+                             )}
+
+                        <img src = {`http://localhost:8019/${post.cover}`} id = "profile-post-img"></img>
+
+                        <div className="post-content">
+                            <p id="summary" dangerouslySetInnerHTML={{ __html: post.content }}/>
+                        </div>
+                        <div className="page-line"></div>
                     </div>
                     ))}
                 </>

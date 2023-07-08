@@ -160,7 +160,7 @@ function EditPost() {
                 )}
 
                 <div className="button-container">
-                    <button id = "submit">Update Post</button>
+                    <button id = "submit">Edit Post</button>
                 </div>
 
                 {showYouMustFillText && (

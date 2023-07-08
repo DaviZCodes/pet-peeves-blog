@@ -7,6 +7,6 @@ export default (router: Router) => {
     router.post("/posts", uploadMiddleware.single("image"), createPost);
     router.get("/posts", getPosts);
     router.get("/posts/:id", getPostByID);
-    router.get("/user-posts/:user", getUserPosts);
+    router.get("/user-posts/:username", getUserPosts);
     router.put("/posts/:id", uploadMiddleware.single("image"), editPost);
 }
