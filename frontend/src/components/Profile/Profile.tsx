@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useContext} from "react";
 import "./Profile.scss"
 import { UserContext } from '../UserContext/UserContext';
-import sadCat from "./images/cat sad.png"
+import sadCat from "./images/cat sad.png";
+import loadingGif from "./images/spinning loading.gif";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -17,7 +18,7 @@ interface Post {
 function Profile() {
     const navigate = useNavigate();
     const { userInfo } = useContext(UserContext);
-    const [showCatAndPost, setShowCatAndPost] = useState<boolean>(true);
+    const [showCatAndPost, setShowCatAndPost] = useState<boolean>(false);
     const [posts, setPosts] = useState<Post[]>([]);
     const [fetchingPostsText, setFetchingPostsText] = useState<boolean>(true);
 
@@ -33,6 +34,7 @@ function Profile() {
 
                 if (posts.length != 0) {
                     setShowCatAndPost(false);
+                    setFetchingPostsText(false);
                 }
             }
         } 
@@ -42,6 +44,17 @@ function Profile() {
         };
         fetchUserPosts();
     }, );
+
+    //first show no cat, only show fetching, if not fetched after 2 seconds, show cat
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+          setShowCatAndPost(true);
+          setFetchingPostsText(false);
+        }, 2000);
+    
+        return () => clearTimeout(timeoutId); // Cleanup the timeout if the component unmounts before 2 seconds
+    
+      }, []);
 
 
     useEffect(() => {
@@ -58,6 +71,14 @@ function Profile() {
             <h1>Welcome back, "{userInfo}".</h1>
 
             <h2>Below are your posts:</h2>
+            {fetchingPostsText && (
+                <>
+                <p>Fetching your posts...</p>
+                <div style = {{marginTop: "30px"}}>
+                    <img src = {loadingGif} id = "loading"></img>
+                </div>
+                </>
+            )}
             {!showCatAndPost && (
                 <>
                 <div className="page-line"></div>
