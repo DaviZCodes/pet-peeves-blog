@@ -1,5 +1,8 @@
 import "./Home.scss"
 import HomePost from "../HomePost/HomePost";
+import funnyDog from "./images/funny dog.png";
+import parrot from "./images/parrot.jpeg";
+import shark from "./images/shark.jpg";
 import {useState, useEffect} from "react";
 import refreshpage from "./images/refreshpage.png"
 import axios from "axios";
@@ -67,7 +70,7 @@ function Home() {
                 />
                 ))}   
 
-                    {/* <div className="post-home">
+                    <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
                     </div>
@@ -78,7 +81,7 @@ function Home() {
                             <time>Jan 1, 2023</time>
                         </p>
                         <p id = "summary">My dog is an alcoholic.
-                                        If I don't treat her like a princess, she just whines all day long.</p>
+                                        If I don't treat her like a princess, she just whines all day long...</p>
                     </div>
                 </div>
 
@@ -93,7 +96,7 @@ function Home() {
                             <time>June 30, 2023</time>
                         </p>
                         <p id = "summary">My parrot likes to lie about everything?
-                                        In sum, my parrot is a pathological liar. </p>
+                                        In sum, my parrot is a pathological liar... </p>
                     </div>
                 </div>
 
@@ -109,7 +112,7 @@ function Home() {
                         </p>
                         <p id = "summary">Hey! I am a millionaire from Dubai. I have bought a giant aquarium. I was just wondering if sharks like to be pet like dogs?</p>
                     </div>
-                </div> */}
+                </div>
 
             </div>
         </div>
