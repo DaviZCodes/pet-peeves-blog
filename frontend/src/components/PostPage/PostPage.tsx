@@ -55,6 +55,9 @@ function PostPage() {
             const data = new FormData();
             data.set("title", title);
             data.set("content", quillContent);
+            if (userInfo){
+                data.set("author", userInfo);
+            }
 
             if (image) {
                 data.set("image", image[0]); //ensure only one image is passed
@@ -89,7 +92,7 @@ function PostPage() {
     
       const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
-        setShowPassedTitleCharLimitText(event.target.value.length > 50);
+        setShowPassedTitleCharLimitText(event.target.value.length > 80);
       };
     
       const handleImageChange = (event: any) => {
@@ -100,7 +103,7 @@ function PostPage() {
     const handleQuillChange = (content:string) => {
         setQuillContent(content);
         //display error if char limit is passed
-        setShowContentPassedCharLimitText(content.length > 2000)
+        setShowContentPassedCharLimitText(content.length > 3000)
     }
 
     //user can only access /post if logged in
@@ -127,7 +130,7 @@ function PostPage() {
                     onChange={handleTitleChange} required></input> 
                     {showPassedTitleCharLimitText && (
                     <>
-                    <p id = "passed-char"> You passed the character limit of 50.</p>
+                    <p id = "passed-char"> You passed the character limit of 80.</p>
                     </>
                 )}
 
@@ -138,7 +141,7 @@ function PostPage() {
                     onChange={handleQuillChange} placeholder="Write your post info here"/>
                 </div>
 
-                <p id = "char-max">char max: 2000</p>
+                <p id = "char-max">char max: 3000</p>
                 {showPassedContentCharLimitText && (
                     <>
                     <p id = "passed-char"> You passed the character limit.</p>

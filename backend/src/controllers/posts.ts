@@ -13,12 +13,13 @@ export const createPost = async (req: Request, res: Response) => {
         const newImagePath = path+"."+ext
         fs.renameSync(path, newImagePath);
 
-        const {title, content} = req.body;
+        const {title, content, author} = req.body;
 
         const postDocument = await PostModel.create({
             title,
             content,
             cover: newImagePath, 
+            author,
         },
         );
 

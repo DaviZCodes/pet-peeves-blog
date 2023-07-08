@@ -1,9 +1,6 @@
 import "./Home.scss"
 import HomePost from "../HomePost/HomePost";
 import {useState, useEffect} from "react";
-import funnyDog from "./images/funny dog.png";
-import parrot from "./images/parrot.jpeg";
-import shark from "./images/shark.jpg";
 import refreshpage from "./images/refreshpage.png"
 import axios from "axios";
 
@@ -12,6 +9,7 @@ interface Post {
     content: string;
     cover: string;
     createdAt: string;
+    author: string;
   }
 
 function Home() {
@@ -66,9 +64,9 @@ function Home() {
                     createdAt={post.createdAt}
                     content={post.content}
                     cover={post.cover}
+                    author={post.author}
                 />
                 ))}   
-
 
                     {/* <div className="post-home">
                     <div className="image">

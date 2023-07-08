@@ -17,7 +17,6 @@ app.use(cors({
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyparser.json());
-// app.use("/uploads", express.static(__dirname + "/uploads"));
 
 
 //running the server
@@ -38,3 +37,4 @@ mongoose.connection.on("error", (error: Error) => {
 })
 
 app.use("/", router());
+app.use("/uploads", express.static("uploads"));
