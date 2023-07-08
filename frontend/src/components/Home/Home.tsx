@@ -70,6 +70,7 @@ function Home() {
                 />
                 ))}   
 
+                    <h2>The 3 posts below are frontend only:</h2>
                     <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
