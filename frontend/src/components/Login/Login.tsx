@@ -44,9 +44,8 @@ function Login() {
     }
 
     //change tab title
-    useEffect(() =>{
-        document.title = "Login!"
-    }, [])
+    document.title = "Login!"
+
 
     //if logged in, automatically go to "/post"
     useEffect(() => {

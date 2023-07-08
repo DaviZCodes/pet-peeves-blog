@@ -6,9 +6,7 @@ import "./About.scss"
 function About() {
 
     //change tab title
-    useEffect(() => {
-        document.title = "Who are we?";
-    }, [])
+    document.title = "Who are we?";
 
     //showing text when user clicks on cat
     const [isVisible, setVisible]= useState<boolean>(false)

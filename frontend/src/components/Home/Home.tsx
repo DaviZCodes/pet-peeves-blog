@@ -5,6 +5,7 @@ import refreshpage from "./images/refreshpage.png"
 import axios from "axios";
 
 interface Post {
+    _id: string;
     title: string;
     content: string;
     cover: string;
@@ -24,7 +25,6 @@ function Home() {
 
                 if (response.status === 200) {
                     setPosts(response.data);
-                    console.log("these are the posts", response.data);
                 }
             }
             catch(error) {
@@ -36,9 +36,7 @@ function Home() {
     }, [])
 
     //change tab title
-    useEffect(() => {
-        document.title = "Pet Peeves!";
-    }, [])
+    document.title = "Pet Peeves!";
 
     //refresh page
     const handleRefresh = () => {
@@ -60,6 +58,7 @@ function Home() {
                 {posts.length > 0 && posts.map((post, index) => (
                     <HomePost
                     key={index}
+                    _id = {post._id}
                     title={post.title}
                     createdAt={post.createdAt}
                     content={post.content}

@@ -1,17 +1,16 @@
-import {useEffect, useContext, useState} from "react";
 import axios from "axios";
-import "./PostPage.scss"
-import { UserContext } from "../UserContext/UserContext";
-import { Navigate, useNavigate } from "react-router";
+import { useState, useEffect, useContext } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"
+import { Navigate, useNavigate, useParams } from "react-router";
+import { UserContext } from "../UserContext/UserContext";
+import "./EditPost.scss";
 
-function PostPage() {
+function EditPost() {
 
     //user can only access /post if logged in
     const { userInfo } = useContext(UserContext);
     const navigate = useNavigate();
-
+    const { id } = useParams();
     const [showPassedContentCharLimitText, setShowContentPassedCharLimitText] = useState<boolean>(false);
     const [showYouMustFillText, setShowYouMustFillText] = useState<boolean>(false);
     const [title, setTitle] = useState<string>("");
@@ -37,38 +36,77 @@ function PostPage() {
         'list', 'bullet', 'indent',
         'link', 'image'
       ]
+    
+    //fetch the single post
+    useEffect(() => {
+        const fetchPostInfo = async (): Promise<void> => {
+            try {
+                const response = await axios.get(`http://localhost:8019/posts/${id}`);
 
-    async function createPost(event: { preventDefault: () => void; }) {
+                if (response.status === 200) {
+                    const postInformation = response.data;
+
+                    //if user is not author, cannot edit, go back to home page
+                    if (postInformation.author != userInfo){
+                        navigate("/");
+                    }
+                    
+                    setTitle(postInformation.title);
+                    setImage(postInformation.image);
+                    setQuillContent(postInformation.quillContent);
+                }
+            }
+            catch(error) {
+                console.log(error);
+            }
+        };
+
+        fetchPostInfo();
+    }, []);
+
+    async function updatePost(event: { preventDefault: () => void; }){
         event.preventDefault();
-        //if not all fields are filled out
-        if (!quillContent || !title || (image === "")) {
-          setShowYouMustFillText(true);
-          return;
-        }
+        const data = new FormData();
 
-        //if passed character limit
-        if (showPassedContentCharLimitText){
-            return;
-        }
+        data.set("title", title);
+        data.set("content", quillContent);
+        data.set("author", userInfo!);
+
+        data.set("image", image?.[0]); //ensure only one image is passed
+
 
         try {
-            const data = new FormData();
-            data.set("title", title);
-            data.set("content", quillContent);
-            data.set("author", userInfo!);
-    
+            const response = await axios.put(`http://localhost:8019/posts/${id}`);
 
-            data.set("image", image?.[0]); //ensure only one image is passed
-             
-            const response = await axios.post("http://localhost:8019/posts", data);
             if (response.status === 200) {
+                const postInformation = response.data;
+
+                setTitle(postInformation.title);
+                setImage(postInformation.image);
+                setQuillContent(postInformation.quillContent);
+
                 setRedirect(true);
             }
         }
-
-        catch (error) { 
+        catch(error) {
             console.log(error);
         }
+    }
+
+    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(event.target.value);
+        setShowPassedTitleCharLimitText(event.target.value.length > 80);
+      };
+    
+      const handleImageChange = (event: any) => {
+          setImage(event.target.files);
+          setSelectedFileNameText(event.target.files[0].name);
+      };
+
+    const handleQuillChange = (content:string) => {
+        setQuillContent(content);
+        //display error if char limit is passed
+        setShowContentPassedCharLimitText(content.length > 5000)
     }
 
     //if text fields are empty, display error for 2.5 secs
@@ -86,42 +124,18 @@ function PostPage() {
         };
     
       }, [showYouMustFillText]);
-    
-      const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value);
-        setShowPassedTitleCharLimitText(event.target.value.length > 80);
-      };
-    
-      const handleImageChange = (event: any) => {
-          setImage(event.target.files);
-          setSelectedFileNameText(event.target.files[0].name);
-      };
 
-    const handleQuillChange = (content:string) => {
-        setQuillContent(content);
-        //display error if char limit is passed
-        setShowContentPassedCharLimitText(content.length > 5000)
-    }
-
-    //user can only access /post if logged in
-    useEffect(() =>{
-        //change title of tab
-        document.title = "Post!"
-
-        if (!userInfo) {
-            navigate("/login");
-        }
-    }, [])
+    document.title = "Edit Post!";
 
     //redirect page
     if (redirect) {
-        return <Navigate to = {"/"}/>
+        return <Navigate to = {`/posts/${id}`}/>
     }
 
     return (
-        <div className="create-post">
-            <h1>Create a Post</h1>
-            <form onSubmit={createPost}>
+        <div className="edit-post">
+            <h1>Edit Post</h1>
+            <form onSubmit={updatePost}>
                 <div className="user-input">
                     <input type = "title" id = "title" value = {title} placeholder="Title of your post" 
                     onChange={handleTitleChange} required></input> 
@@ -146,7 +160,7 @@ function PostPage() {
                 )}
 
                 <div className="button-container">
-                    <button id = "submit">Create Post</button>
+                    <button id = "submit">Update Post</button>
                 </div>
 
                 {showYouMustFillText && (
@@ -159,4 +173,4 @@ function PostPage() {
     );
 }
 
-export default PostPage ;
+export default EditPost;
