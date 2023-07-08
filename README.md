@@ -23,6 +23,11 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 ![Single Page](https://i.imgur.com/DFM08ue.png)
 ![Create a post](https://i.imgur.com/tdmcStI.png) 
 
+### Technical features 
+<ul>
+  <li> Passwords are 20+ long characters/numbers hashed with random text/hex/numbers - nearly impossible to trace back</li>
+</ul>
+
 
 ### Image credits:
 <ul>
