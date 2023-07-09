@@ -41,18 +41,16 @@
         margin-bottom: 10px;
         
         a {
-          color: #504f4f;
+          font-size: clamp(12px, 2.6vh, 30px);
+          color: $background-color;
           text-decoration: none;
-          
-          &:hover {
-            text-decoration: underline;
-          }
         }
 
         #edit-post {
-            margin: 10px 10px;
+            display: inline-block;
             text-decoration: underline;
             color: purple;
+            margin-top: 12px;
         }
         
         time {

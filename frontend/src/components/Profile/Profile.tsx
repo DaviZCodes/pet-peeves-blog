@@ -68,9 +68,13 @@ function Profile() {
 
     return (
         <div className="profile">
-            <h1>Welcome back, "{userInfo}".</h1>
+            <h1>Welcome back,&nbsp; 
+                <span id = "profile-username">{userInfo}</span>
+                .
+            </h1>
 
             <h2>Below are your posts:</h2>
+            <br></br>
             {fetchingPostsText && (
                 <>
                 <p>Fetching your posts...</p>
@@ -81,16 +85,16 @@ function Profile() {
             )}
             {!showCatAndPost && (
                 <>
-                <div className="page-line"></div>
                     {posts.map((post) => (
-                    <div key={post._id} className="post">
+                    <div key={post._id}>
 
                         <h1 id = "post-title">{post.title}</h1>
+
                         {userInfo === post.author && (
-                        <div>
-                            <Link to = {`/edit/${post._id}`} id = "edit-post">Edit Post</Link>
-                        </div>
-                             )}
+                            <div className = "#edit-post-container">
+                                <Link to = {`/edit/${post._id}`} id = "edit-post">Edit Post</Link>
+                            </div>
+                        )}
 
                         <img src = {`http://localhost:8019/${post.cover}`} id = "profile-post-img"></img>
 
@@ -102,14 +106,15 @@ function Profile() {
                     ))}
                 </>
                 )}
+
             {showCatAndPost && (
-            <>
-            <Link to = "/post">
-                <img src = {sadCat} alt = "Crying cat" id = "sad-cat"></img>
-            </Link>
-            
-            <p id = "no-posts">You currently have no posts. Once you create a&nbsp;<Link to = "/post" id = "post">post </Link>, it will appear here.</p>
-            </>
+                <>
+                <Link to = "/post">
+                    <img src = {sadCat} alt = "Crying cat" id = "sad-cat"></img>
+                </Link>
+                
+                <p id = "no-posts">You currently have no posts. Once you create a&nbsp;<Link to = "/post" id = "post">post </Link>, it will appear here.</p>
+                </>
             )
 }
 
