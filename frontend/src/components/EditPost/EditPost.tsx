@@ -50,41 +50,48 @@ function EditPost() {
                     if (postInformation.author != userInfo){
                         navigate("/");
                     }
-                    
-                    setTitle(postInformation.title);
-                    setImage(postInformation.image);
-                    setQuillContent(postInformation.quillContent);
+
+                    else {
+                        console.log("the iamge is", postInformation.cover)
+                        setTitle(postInformation.title);
+                        setImage(postInformation.cover);
+                        setSelectedFileNameText(postInformation.cover);
+                        setQuillContent(postInformation.content);
+                    }
                 }
             }
             catch(error) {
                 console.log(error);
             }
         };
-
         fetchPostInfo();
     }, []);
 
     async function updatePost(event: { preventDefault: () => void; }){
         event.preventDefault();
-        const data = new FormData();
-
-        data.set("title", title);
-        data.set("content", quillContent);
-        data.set("author", userInfo!);
-
-        data.set("image", image?.[0]); //ensure only one image is passed
-
+        //if not all fields are filled out
+        if (!quillContent || !title || (image === "")) {
+            setShowYouMustFillText(true);
+            return;
+          }
+  
+        //if passed character limit
+        if (showPassedContentCharLimitText){
+            return;
+        }
 
         try {
+            const data = new FormData();
+
+            data.set("title", title);
+            data.set("content", quillContent);
+            data.set("author", userInfo!);
+    
+            data.set("image", image?.[0]); //ensure only one image is passed
+
             const response = await axios.put(`http://localhost:8019/posts/${id}`);
 
             if (response.status === 200) {
-                const postInformation = response.data;
-
-                setTitle(postInformation.title);
-                setImage(postInformation.image);
-                setQuillContent(postInformation.quillContent);
-
                 setRedirect(true);
             }
         }
