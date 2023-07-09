@@ -154,7 +154,6 @@ function EditPost() {
 
                     <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange} required></input>
                     <label htmlFor="file-input"  id="image" className="custom-file-label">{selectedFileNameText || "Choose a file"}</label>
-
                     <ReactQuill id = "react-quill" value = {quillContent} modules={modules} formats={formats}
                     onChange={handleQuillChange} placeholder="Write your post info here"/>
                 </div>

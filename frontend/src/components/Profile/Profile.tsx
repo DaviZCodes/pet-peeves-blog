@@ -32,17 +32,17 @@ function Profile() {
             if (response.status === 200) {
                 setPosts(response.data);
 
-                if (posts.length != 0) {
-                    setShowCatAndPost(false);
-                    setFetchingPostsText(false);
+                if (response.data.length === 0) {
+                    const timeoutId = setTimeout(() => {
+                      setShowCatAndPost(true);
+                      setFetchingPostsText(false);  
+                    }, 2000);
+
+                    clearTimeout(timeoutId);
                 }
                 else {
-                    const timeoutId = setTimeout(() => {
-                        setShowCatAndPost(true);
-                        setFetchingPostsText(false);
-                    }, 3000);
-
-                    () => clearTimeout(timeoutId);
+                    setShowCatAndPost(false);
+                    setFetchingPostsText(false);
                   }
             }
         } 
