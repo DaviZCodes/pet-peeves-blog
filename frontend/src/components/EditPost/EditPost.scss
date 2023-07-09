@@ -8,6 +8,14 @@
     justify-content: space-between;
     font-family: $font-family;
 
+    #editposttext {
+        transition: color 0.36s ease-in-out;
+
+        &:hover {
+        color: $background-color;
+        }
+    }
+
     .button-container {
         @media (max-width: 750px) {
             margin-top: 36px;

@@ -134,7 +134,7 @@ function EditPost() {
 
     return (
         <div className="edit-post">
-            <h1>Edit Post</h1>
+            <h1 id = "editposttext">Edit Post</h1>
             <form onSubmit={updatePost}>
                 <div className="user-input">
                     <input type = "title" id = "title" value = {title} placeholder="Title of your post" 
