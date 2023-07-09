@@ -38,7 +38,9 @@ export const createPost = async (req: Request, res: Response) => {
 
   export const getPosts = async (req: Request, res: Response) => {
     try {
-        const posts = await PostModel.find();
+        const posts = await PostModel.find()
+        .sort({createdAt:-1}) //newest only
+        .limit(20); //limit of 20
 
         return res.status(200).json(posts).end();
       }
