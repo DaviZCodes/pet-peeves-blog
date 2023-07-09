@@ -66,6 +66,29 @@ export const createPost = async (req: Request, res: Response) => {
       return res.sendStatus(400);
     }
   };
+
+  export const deletePostByID = async (req: Request, res: Response) => {
+    try {
+
+      const {id} = req.params;
+
+      const post = await PostModel.findByIdAndDelete(id);
+
+      if (!post) {
+        return res.sendStatus(404);
+      }
+
+      fs.unlinkSync(post.cover!); //delete post image too
+
+      return res.status(200).json(post).end();
+    }
+
+    catch (error) {
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
+
   
   export const getUserPosts = async (req: Request, res: Response) => {
     try {

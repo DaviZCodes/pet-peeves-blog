@@ -100,6 +100,20 @@ function EditPost() {
         }
     }
 
+    const handleDeletePost = async () => {
+        try {
+            const response = await axios.delete(`http://localhost:8019/posts/${id}`);
+            if (response.status === 200) {
+              // Post deleted successfully
+              console.log("Post deleted successfully");
+              navigate("/");
+            }
+          } 
+            catch (error) {
+                console.log(error);
+            }
+        };
+
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
         setShowPassedTitleCharLimitText(event.target.value.length > 80);
@@ -175,6 +189,9 @@ function EditPost() {
                     </>
                 )}
             </form>
+            <div className="delete-button-container">
+                <button id = "delete-post" onClick={handleDeletePost}>Delete Post</button>
+            </div>
         </div>
     );
 }
