@@ -36,6 +36,14 @@ function Profile() {
                     setShowCatAndPost(false);
                     setFetchingPostsText(false);
                 }
+                else {
+                    const timeoutId = setTimeout(() => {
+                        setShowCatAndPost(true);
+                        setFetchingPostsText(false);
+                    }, 3000);
+
+                    () => clearTimeout(timeoutId);
+                  }
             }
         } 
         catch (error) {
@@ -45,26 +53,19 @@ function Profile() {
         fetchUserPosts();
     }, );
 
-    //first show no cat, only show fetching, if not fetched after 2 seconds, show cat
-    useEffect(() => {
-        const timeoutId = setTimeout(() => {
-          setShowCatAndPost(true);
-          setFetchingPostsText(false);
-        }, 2000);
-    
-        return () => clearTimeout(timeoutId); // Cleanup the timeout if the component unmounts before 2 seconds
-    
-      }, []);
-
 
     useEffect(() => {
-        //change title of tab
-        document.title = "Profile!";
-
+        // Change title of tab
+        document.title = 'Profile!';
+    
         if (!userInfo) {
-            navigate("/login");
+          const timeoutId = setTimeout(() => {
+            navigate('/login');
+          }, 2000);
+    
+          return () => clearTimeout(timeoutId);
         }
-    }, [])
+      }, [userInfo, navigate]);
 
     return (
         <div className="profile">
@@ -85,9 +86,8 @@ function Profile() {
             )}
             {!showCatAndPost && (
                 <>
-                    {posts.map((post) => (
+                    {posts.map((post, index) => (
                     <div key={post._id}>
-
                         <h1 id = "post-title">{post.title}</h1>
 
                         {userInfo === post.author && (

@@ -23,10 +23,28 @@
     }
 
     #edit-post {
+        display: inline-block;
         text-decoration: underline;
-        color: purple;
-        margin-bottom: 10px; 
-        display: inline-block; /* ensure margin shows */
+        border: solid;
+        background-color: $background-color;
+        border-color: $background-color;
+        padding: 10px;
+        color: rgb(255, 255, 255);
+        margin-bottom: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: transform 1s;
+        font-weight: bold;
+        font-size: clamp(12px, 2.6vh, 30px);
+
+        @media (max-width: 300px) {
+            width: 50px;
+            font-size: 12px;
+        }
+
+        &:hover{
+            transform: scale(1.06);
+        }
       }
 
     .page-line {

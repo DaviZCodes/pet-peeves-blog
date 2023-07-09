@@ -109,8 +109,12 @@ function PostPage() {
         document.title = "Post!"
 
         if (!userInfo) {
-            navigate("/login");
-        }
+            const timeoutId = setTimeout(() => {
+              navigate('/login');
+            }, 2000);
+      
+            return () => clearTimeout(timeoutId);
+          }
     }, [])
 
     //redirect page
