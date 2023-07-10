@@ -18,7 +18,6 @@ function Register() {
             await axios.post("http://localhost:8019/register", {
                 username, password
             })
-            console.log("Successfully registered!")
             navigate("/login");
         }
 

@@ -41,7 +41,7 @@ function NavBar() {
 
       } 
       catch (error) {
-        console.log("Failed to logisn");
+        console.log("Failed to login");
         console.log(error);
       }
     };

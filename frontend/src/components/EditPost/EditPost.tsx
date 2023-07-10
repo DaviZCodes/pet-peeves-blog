@@ -80,7 +80,6 @@ function EditPost() {
         }
 
         try {
-            console.log("editing post");
             const data = new FormData();
             data.set("title", title);
             data.set("content", quillContent);
@@ -106,7 +105,6 @@ function EditPost() {
             const response = await axios.delete(`http://localhost:8019/posts/${id}`);
             if (response.status === 200) {
               // Post deleted successfully
-              console.log("Post deleted successfully");
               navigate("/");
             }
           } 
