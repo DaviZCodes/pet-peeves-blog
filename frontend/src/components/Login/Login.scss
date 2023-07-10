@@ -31,6 +31,10 @@
         display: flex;
         font-size: 20px;
         color: black;
+
+        @media (max-width: 370px) {
+            font-size: 19px;
+        }
     
         @media (max-width: 300px) {
             font-size: 18px;
@@ -98,8 +102,16 @@
     height: 30px;
     width: 300px;
 
+    @media (max-width: 370px) {
+        width: 220px;
+    }
+
     @media (max-width: 300px) {
         width: 200px;
+    }
+
+    @media (max-width: 280px) {
+        width: 150px;
     }
 }
 
@@ -115,6 +127,10 @@
     transition: transform 1s;
     font-weight: bold;
     width: 300px;
+
+    @media (max-width: 370px) {
+        width: 220px;
+    }
 
     @media (max-width: 300px) {
         width: 50px;

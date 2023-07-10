@@ -18,7 +18,6 @@
 
         @media (max-width: 300px) {
             width: 200px;
-            margin-left: 10px;
         }
 
         @media (max-height: 670px){
@@ -36,6 +35,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        @media (max-width: 370px) {
+            font-size: 16px;
+        }
 
         @media (max-width: 300px) {
             font-size: 10px;
@@ -70,6 +73,10 @@
         transition: transform 1s;
         font-weight: bold;
         width: 300px;
+
+        @media (max-width: 370px) {
+            width: 80px;
+        }
 
         @media (max-width: 300px) {
             width: 50px;
