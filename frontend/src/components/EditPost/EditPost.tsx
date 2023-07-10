@@ -47,12 +47,11 @@ function EditPost() {
                     const postInformation = response.data;
 
                     //if user is not author, cannot edit, go back to home page
-                    if (postInformation.author != userInfo){
+                    if (postInformation.author !== userInfo){
                         navigate("/");
                     }
 
                     else {
-                        console.log("the iamge is", postInformation.cover)
                         setTitle(postInformation.title);
                         setImage(postInformation.cover);
                         setSelectedFileNameText(postInformation.cover);
@@ -67,7 +66,7 @@ function EditPost() {
         fetchPostInfo();
     }, []);
 
-    async function updatePost(event: { preventDefault: () => void; }){
+    async function editPost(event: { preventDefault: () => void; }){
         event.preventDefault();
         //if not all fields are filled out
         if (!quillContent || !title || (image === "")) {
@@ -81,15 +80,16 @@ function EditPost() {
         }
 
         try {
+            console.log("editing post");
             const data = new FormData();
-
             data.set("title", title);
             data.set("content", quillContent);
             data.set("author", userInfo!);
-    
             data.set("image", image?.[0]); //ensure only one image is passed
 
-            const response = await axios.put(`http://localhost:8019/posts/${id}`);
+            const response = await axios.put(`http://localhost:8019/posts/${id}`, data, {
+                withCredentials: true,
+            });
 
             if (response.status === 200) {
                 setRedirect(true);
@@ -156,7 +156,7 @@ function EditPost() {
     return (
         <div className="edit-post">
             <h1 id = "editposttext">Edit Post</h1>
-            <form onSubmit={updatePost}>
+            <form onSubmit={editPost}>
                 <div className="user-input">
                     <input type = "title" id = "title" value = {title} placeholder="Title of your post" 
                     onChange={handleTitleChange} required></input> 
@@ -166,7 +166,7 @@ function EditPost() {
                     </>
                 )}
 
-                    <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange} required></input>
+                    <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange}></input>
                     <label htmlFor="file-input"  id="image" className="custom-file-label">{selectedFileNameText || "Choose a file"}</label>
                     <ReactQuill id = "react-quill" value = {quillContent} modules={modules} formats={formats}
                     onChange={handleQuillChange} placeholder="Write your post info here"/>

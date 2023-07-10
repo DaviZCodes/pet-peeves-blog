@@ -107,10 +107,10 @@ export const createPost = async (req: Request, res: Response) => {
 
   export const editPost = async (req: Request, res: Response) => {
     try {
-      if (!req.file) {
+      if (!req.file || !req.body.id || !req.body.title || !req.body.content || !req.body.author) {
         return res.sendStatus(400);
       }
-
+  
       const { id, title, content, author } = req.body;
       const { originalname, path } = req.file;
       const parts = originalname.split(".");
@@ -132,13 +132,11 @@ export const createPost = async (req: Request, res: Response) => {
   
       return res.status(200).json(postDoc).end();
     } 
-
     catch (error) {
       console.log(error);
       return res.sendStatus(400);
     }
   };
-  
   
   
   
