@@ -107,30 +107,42 @@ export const createPost = async (req: Request, res: Response) => {
 
   export const editPost = async (req: Request, res: Response) => {
     try {
-      if (!req.file || !req.body.id || !req.body.title || !req.body.content || !req.body.author) {
-        return res.sendStatus(400);
+
+      let newPath = req.body.cover;
+      
+      if (req.file) {
+        const { originalname, path } = req.file;
+        const parts = originalname.split(".");
+        const ext = parts[parts.length - 1];
+        const newImagePath = path + "." + ext;
+  
+        try {
+          fs.renameSync(path, newImagePath);
+          newPath = newImagePath;
+        } 
+        catch (error) {
+          console.log(error);
+          return res.sendStatus(500); // Internal Server Error
+        }
+      }
+
+      const { id, title, content } = req.body;
+  
+      const updatedPost = await PostModel.findOneAndUpdate(
+        { _id: id },
+        {
+          title,
+          content,
+          cover: newPath,
+        },
+        { new: true }
+      );
+  
+      if (!updatedPost) {
+        return res.sendStatus(404); // Not Found
       }
   
-      const { id, title, content, author } = req.body;
-      const { originalname, path } = req.file;
-      const parts = originalname.split(".");
-      const ext = parts[parts.length - 1];
-      const newImagePath = path + "." + ext;
-      fs.renameSync(path, newImagePath);
-  
-      const postDoc = await PostModel.findById(id);
-      if (!postDoc) {
-        return res.sendStatus(404);
-      }
-  
-      postDoc.title = title;
-      postDoc.content = content;
-      postDoc.cover = newImagePath;
-      postDoc.author = author;
-  
-      await postDoc.save();
-  
-      return res.status(200).json(postDoc).end();
+      return res.status(200).json(updatedPost);
     } 
     catch (error) {
       console.log(error);

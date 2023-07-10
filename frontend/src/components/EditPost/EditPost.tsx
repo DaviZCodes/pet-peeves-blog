@@ -86,8 +86,9 @@ function EditPost() {
             data.set("content", quillContent);
             data.set("author", userInfo!);
             data.set("image", image?.[0]); //ensure only one image is passed
+            data.set("id", id!);
 
-            const response = await axios.put(`http://localhost:8019/posts/${id}`, data, {
+            const response = await axios.put("http://localhost:8019/posts/", data, {
                 withCredentials: true,
             });
 
@@ -160,6 +161,7 @@ function EditPost() {
                 <div className="user-input">
                     <input type = "title" id = "title" value = {title} placeholder="Title of your post" 
                     onChange={handleTitleChange} required></input> 
+
                     {showPassedTitleCharLimitText && (
                     <>
                     <p id = "passed-char"> You passed the character limit of 80.</p>
@@ -168,6 +170,7 @@ function EditPost() {
 
                     <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange}></input>
                     <label htmlFor="file-input"  id="image" className="custom-file-label">{selectedFileNameText || "Choose a file"}</label>
+
                     <ReactQuill id = "react-quill" value = {quillContent} modules={modules} formats={formats}
                     onChange={handleQuillChange} placeholder="Write your post info here"/>
                 </div>

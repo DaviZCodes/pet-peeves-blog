@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import {useState, useEffect, useContext} from "react";
 import "./Profile.scss"
 import { UserContext } from '../UserContext/UserContext';
 import sadCat from "./images/cat sad.png";
@@ -24,6 +24,7 @@ function Profile() {
 
    //fetch all of your own posts to profile
     useEffect(() => {
+        let timeoutId: number;
         const fetchUserPosts = async (): Promise<void> => {
         try {
 
@@ -33,7 +34,7 @@ function Profile() {
                 setPosts(response.data);
 
                 if (response.data.length === 0) {
-                    const timeoutId = setTimeout(() => {
+                    timeoutId = setTimeout(() => {
                       setShowCatAndPost(true);
                       setFetchingPostsText(false);  
                     }, 2000);
@@ -51,7 +52,10 @@ function Profile() {
         }
         };
         fetchUserPosts();
-    }, );
+        return () => {
+            clearTimeout(timeoutId);
+          };
+    }, [userInfo]);
 
 
     useEffect(() => {
