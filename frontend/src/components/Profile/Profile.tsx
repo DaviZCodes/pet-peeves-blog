@@ -23,39 +23,33 @@ function Profile() {
     const [fetchingPostsText, setFetchingPostsText] = useState<boolean>(true);
 
    //fetch all of your own posts to profile
-    useEffect(() => {
-        let timeoutId: number;
-        const fetchUserPosts = async (): Promise<void> => {
-        try {
+   useEffect(() => {
+    const fetchUserPosts = async (): Promise<void> => {
+      try {
+        const response = await axios.get(`http://localhost:8019/user-posts/${userInfo!}`);
+      
+        if (response.status === 200) {
+          setPosts(response.data);
+  
+          if (response.data.length === 0) {
+            setTimeout(() => {
+                setShowCatAndPost(true);
+                setFetchingPostsText(false);
+              }, 500);
 
-            const response = await axios.get(`http://localhost:8019/user-posts/${userInfo!}`);
-        
-            if (response.status === 200) {
-                setPosts(response.data);
-
-                if (response.data.length === 0) {
-                    timeoutId = setTimeout(() => {
-                      setShowCatAndPost(true);
-                      setFetchingPostsText(false);  
-                    }, 2000);
-
-                    clearTimeout(timeoutId);
-                }
-                else {
-                    setShowCatAndPost(false);
-                    setFetchingPostsText(false);
-                  }
-            }
-        } 
-        catch (error) {
-            console.log(error);
+          } else {
+            setShowCatAndPost(false);
+            setFetchingPostsText(false);
+          }
         }
-        };
-        fetchUserPosts();
-        return () => {
-            clearTimeout(timeoutId);
-          };
-    }, [userInfo]);
+      } 
+      catch (error) {
+        console.log(error);
+      }
+    };
+  
+    fetchUserPosts();
+  }, [userInfo]);
 
 
     useEffect(() => {
