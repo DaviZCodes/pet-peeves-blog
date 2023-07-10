@@ -41,18 +41,34 @@
         margin-bottom: 10px;
         
         a {
-          color: #504f4f;
+          font-size: clamp(12px, 2.6vh, 30px);
+          color: $background-color;
           text-decoration: none;
-          
-          &:hover {
-            text-decoration: underline;
-          }
         }
 
         #edit-post {
-            margin: 10px 10px;
+            display: inline-block;
             text-decoration: underline;
-            color: purple;
+            border: solid;
+            background-color: $background-color;
+            border-color: $background-color;
+            padding: 10px;
+            color: rgb(255, 255, 255);
+            margin-top: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 1s;
+            font-weight: bold;
+            font-size: clamp(12px, 2.6vh, 30px);
+
+            @media (max-width: 300px) {
+                width: 50px;
+                font-size: 12px;
+            }
+
+            &:hover{
+                transform: scale(1.06);
+            }
         }
         
         time {

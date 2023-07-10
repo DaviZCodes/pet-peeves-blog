@@ -41,7 +41,6 @@ function NavBar() {
 
       } 
       catch (error) {
-        console.log("Failed to logisn");
         console.log(error);
       }
     };

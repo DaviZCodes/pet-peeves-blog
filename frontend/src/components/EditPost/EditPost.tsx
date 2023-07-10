@@ -47,44 +47,51 @@ function EditPost() {
                     const postInformation = response.data;
 
                     //if user is not author, cannot edit, go back to home page
-                    if (postInformation.author != userInfo){
+                    if (postInformation.author !== userInfo){
                         navigate("/");
                     }
-                    
-                    setTitle(postInformation.title);
-                    setImage(postInformation.image);
-                    setQuillContent(postInformation.quillContent);
+
+                    else {
+                        setTitle(postInformation.title);
+                        setImage(postInformation.cover);
+                        setSelectedFileNameText(postInformation.cover);
+                        setQuillContent(postInformation.content);
+                    }
                 }
             }
             catch(error) {
                 console.log(error);
             }
         };
-
         fetchPostInfo();
     }, []);
 
-    async function updatePost(event: { preventDefault: () => void; }){
+    async function editPost(event: { preventDefault: () => void; }){
         event.preventDefault();
-        const data = new FormData();
-
-        data.set("title", title);
-        data.set("content", quillContent);
-        data.set("author", userInfo!);
-
-        data.set("image", image?.[0]); //ensure only one image is passed
-
+        //if not all fields are filled out
+        if (!quillContent || !title || (image === "")) {
+            setShowYouMustFillText(true);
+            return;
+          }
+  
+        //if passed character limit
+        if (showPassedContentCharLimitText){
+            return;
+        }
 
         try {
-            const response = await axios.put(`http://localhost:8019/posts/${id}`);
+            const data = new FormData();
+            data.set("title", title);
+            data.set("content", quillContent);
+            data.set("author", userInfo!);
+            data.set("image", image?.[0]); //ensure only one image is passed
+            data.set("id", id!);
+
+            const response = await axios.put("http://localhost:8019/posts/", data, {
+                withCredentials: true,
+            });
 
             if (response.status === 200) {
-                const postInformation = response.data;
-
-                setTitle(postInformation.title);
-                setImage(postInformation.image);
-                setQuillContent(postInformation.quillContent);
-
                 setRedirect(true);
             }
         }
@@ -92,6 +99,19 @@ function EditPost() {
             console.log(error);
         }
     }
+
+    const handleDeletePost = async () => {
+        try {
+            const response = await axios.delete(`http://localhost:8019/posts/${id}`);
+            if (response.status === 200) {
+              // Post deleted successfully
+              navigate("/");
+            }
+          } 
+            catch (error) {
+                console.log(error);
+            }
+        };
 
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
@@ -134,18 +154,19 @@ function EditPost() {
 
     return (
         <div className="edit-post">
-            <h1>Edit Post</h1>
-            <form onSubmit={updatePost}>
+            <h1 id = "editposttext">Edit Post</h1>
+            <form onSubmit={editPost}>
                 <div className="user-input">
                     <input type = "title" id = "title" value = {title} placeholder="Title of your post" 
                     onChange={handleTitleChange} required></input> 
+
                     {showPassedTitleCharLimitText && (
                     <>
                     <p id = "passed-char"> You passed the character limit of 80.</p>
                     </>
                 )}
 
-                    <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange} required></input>
+                    <input type="file" id="file-input" accept = ".jpg, .jpeg, .png, .webp" onChange={handleImageChange}></input>
                     <label htmlFor="file-input"  id="image" className="custom-file-label">{selectedFileNameText || "Choose a file"}</label>
 
                     <ReactQuill id = "react-quill" value = {quillContent} modules={modules} formats={formats}
@@ -169,6 +190,9 @@ function EditPost() {
                     </>
                 )}
             </form>
+            <div className="delete-button-container">
+                <button id = "delete-post" onClick={handleDeletePost}>Delete Post</button>
+            </div>
         </div>
     );
 }

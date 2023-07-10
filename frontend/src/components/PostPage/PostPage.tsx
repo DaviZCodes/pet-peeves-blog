@@ -109,8 +109,12 @@ function PostPage() {
         document.title = "Post!"
 
         if (!userInfo) {
-            navigate("/login");
-        }
+            const timeoutId = setTimeout(() => {
+              navigate('/login');
+            }, 2000);
+      
+            return () => clearTimeout(timeoutId);
+          }
     }, [])
 
     //redirect page
@@ -120,7 +124,7 @@ function PostPage() {
 
     return (
         <div className="create-post">
-            <h1>Create a Post</h1>
+            <h1 id = "createapost">Create a Post</h1>
             <form onSubmit={createPost}>
                 <div className="user-input">
                     <input type = "title" id = "title" value = {title} placeholder="Title of your post" 

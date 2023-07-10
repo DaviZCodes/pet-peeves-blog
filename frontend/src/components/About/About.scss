@@ -7,6 +7,11 @@ $about-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Luci
     
     #whoarewe {
         font-family: $font-family;
+        transition: color 0.36s ease-in-out;
+
+        &:hover {
+        color: $background-color;
+        }
     }
 
     .about {
@@ -32,7 +37,7 @@ $about-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Luci
         display: inline-flex;
         margin-top: 30px;
         position: relative;
-        font-size: clamp(16px, 5.3vw, 24px);
+        font-size: clamp(16px, 5.6vw, 26px);
         animation: fade-out 6s;
 
         &::after {
@@ -65,13 +70,13 @@ $about-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Luci
         bottom: -6.5px; 
         width: 27%;
         height: 7px; 
-        background-color: rgb(243, 166, 24);
+        background-color: $background-color;
         z-index: -1; 
     }
 
     #intro, #info {
         font-family: $about-font-family;
-        font-size: clamp(12px, 2.3vw, 16px);
+        font-size: clamp(12px, 2.6vw, 20px);
     }
 
     #copyright {
@@ -79,7 +84,7 @@ $about-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Luci
         align-items: flex-end;
         justify-content: center;
         min-height: 10vh;
-        font-size: 12px;
+        font-size: 13px;
     }
 
     #do-not-pet {
