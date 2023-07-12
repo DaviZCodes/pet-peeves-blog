@@ -12,7 +12,7 @@ const cors_1 = __importDefault(require("cors"));
 const router_1 = __importDefault(require("./router"));
 const mongoose_1 = __importDefault(require("mongoose"));
 require("dotenv").config();
-const MONGO_URL = (process.env.MONGO_URL);
+const MONGO_URL = process.env.MONGO_URL;
 const PORT = process.env.PORT;
 //setting up the app
 const app = (0, express_1.default)();

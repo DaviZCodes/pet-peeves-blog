@@ -15,7 +15,7 @@ function Register() {
         element.preventDefault();
 
         try {
-            await axios.post("http://localhost:8019/register", {
+            await axios.post("https://pet-peeves-blog-backend.vercel.app", {
                 username, password
             })
             navigate("/login");

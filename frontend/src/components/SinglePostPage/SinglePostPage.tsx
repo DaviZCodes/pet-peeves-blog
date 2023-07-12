@@ -25,7 +25,7 @@ function SinglePostPage() {
     useEffect(() => {
         const fetchSinglePost = async (): Promise<void> => {
             try {
-                const response = await axios.get(`http://localhost:8019/posts/${id}`);
+                const response = await axios.get(`https://pet-peeves-blog-backend.vercel.app/${id}`);
 
                 if (response.status === 200) {
                     setPostInfo(response.data);
@@ -59,7 +59,7 @@ function SinglePostPage() {
                 </p>
             </div>
             <div className="image">
-                <img src={`http://localhost:8019/${postInfo.cover}`} id="home-img" alt="Post Cover" />
+                <img src={`https://pet-peeves-blog-backend.vercel.app/${postInfo.cover}`} id="home-img" alt="Post Cover" />
             </div>
              <div className="post-content">
                 <p id="summary" dangerouslySetInnerHTML={{ __html: postInfo.content }}/>
