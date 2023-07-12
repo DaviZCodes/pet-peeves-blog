@@ -28,7 +28,7 @@ function NavBar() {
 
     const fetchData = async (): Promise<void> => {
       try {
-        const response = await axios.get("http://localhost:8019/user", {
+        const response = await axios.get("https://pet-peeves-blog-backend.vercel.app/user", {
           withCredentials: true, //use cookies to check if user is logged in
         });
 

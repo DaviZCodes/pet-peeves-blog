@@ -26,7 +26,7 @@ function Profile() {
    useEffect(() => {
     const fetchUserPosts = async (): Promise<void> => {
       try {
-        const response = await axios.get(`http://localhost:8019/user-posts/${userInfo!}`);
+        const response = await axios.get(`https://pet-peeves-blog-backend.vercel.app/${userInfo!}`);
       
         if (response.status === 200) {
           setPosts(response.data);
@@ -94,7 +94,7 @@ function Profile() {
                             </div>
                         )}
 
-                        <img src = {`http://localhost:8019/${post.cover}`} id = "profile-post-img"></img>
+                        <img src = {`https://pet-peeves-blog-backend.vercel.app/${post.cover}`} id = "profile-post-img"></img>
 
                         <div className="post-content">
                             <p id="summary" dangerouslySetInnerHTML={{ __html: post.content }}/>

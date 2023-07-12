@@ -13,7 +13,7 @@ const PORT = process.env.PORT;
 //setting up the app
 const app = express();
 app.use(cors({
-    origin: "http://localhost:5173",  //make sure frontend running on this port
+    origin: "https://pet-peeves-blog.vercel.app",  //make sure frontend running on this port
     credentials: true,
   }));
 
@@ -37,3 +37,6 @@ mongoose.connection.on("error", (error: Error) => {
 
 app.use("/", router());
 app.use("/uploads", express.static("uploads"));
+
+// Export the Express API
+module.exports = app;

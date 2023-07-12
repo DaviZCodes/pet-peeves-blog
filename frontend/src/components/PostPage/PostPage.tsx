@@ -60,7 +60,7 @@ function PostPage() {
 
             data.set("image", image?.[0]); //ensure only one image is passed
              
-            const response = await axios.post("http://localhost:8019/posts", data);
+            const response = await axios.post("https://pet-peeves-blog-backend.vercel.app/posts", data);
             if (response.status === 200) {
                 setRedirect(true);
             }
