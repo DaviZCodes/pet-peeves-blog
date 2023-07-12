@@ -17,7 +17,7 @@ const PORT = process.env.PORT;
 //setting up the app
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: "https://pet-peeves-blog.vercel.app",
+    origin: "http://localhost:5173",
     credentials: true,
 }));
 app.use((0, compression_1.default)());
@@ -35,6 +35,4 @@ mongoose_1.default.connection.on("error", (error) => {
 });
 app.use("/", (0, router_1.default)());
 app.use("/uploads", express_1.default.static("uploads"));
-// Export the Express API
-module.exports = app;
 //# sourceMappingURL=server.js.map

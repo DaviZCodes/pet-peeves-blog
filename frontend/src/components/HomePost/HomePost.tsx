@@ -28,7 +28,7 @@ interface HomePostProps {
         <div className="post-home">
         <div className="image">
             <Link to = {`/posts/${_id}`}>
-            <img src={"https://pet-peeves-blog-backend.vercel.app/" + cover} id="home-img" alt="Post Cover" />
+            <img src={"http://localhost:8019/" + cover} id="home-img" alt="Post Cover" />
             </Link>
         </div>
         <div className="post-content">

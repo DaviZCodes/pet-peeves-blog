@@ -24,7 +24,7 @@ function Home() {
     useEffect(() => {
         const fetchPosts = async (): Promise<void> => {
             try {
-                const response = await axios.get("https://pet-peeves-blog-backend.vercel.app/posts");
+                const response = await axios.get("http://localhost:8019/posts");
 
                 if (response.status === 200) {
                     setPosts(response.data);

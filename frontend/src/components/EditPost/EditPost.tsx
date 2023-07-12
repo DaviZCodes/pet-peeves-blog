@@ -41,7 +41,7 @@ function EditPost() {
     useEffect(() => {
         const fetchPostInfo = async (): Promise<void> => {
             try {
-                const response = await axios.get(`https://pet-peeves-blog-backend.vercel.app/${id}`);
+                const response = await axios.get(`http://localhost:8019/posts/${id}`);
 
                 if (response.status === 200) {
                     const postInformation = response.data;
@@ -87,7 +87,7 @@ function EditPost() {
             data.set("image", image?.[0]); //ensure only one image is passed
             data.set("id", id!);
 
-            const response = await axios.put("https://pet-peeves-blog-backend.vercel.app/posts/", data, {
+            const response = await axios.put("http://localhost:8019/posts/", data, {
                 withCredentials: true,
             });
 
@@ -102,7 +102,7 @@ function EditPost() {
 
     const handleDeletePost = async () => {
         try {
-            const response = await axios.delete(`https://pet-peeves-blog-backend.vercel.app/${id}`);
+            const response = await axios.delete(`http://localhost:8019/posts/${id}`);
             if (response.status === 200) {
               // Post deleted successfully
               navigate("/");

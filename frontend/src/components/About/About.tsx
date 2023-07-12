@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useState } from "react";
 import {useNavigate} from "react-router-dom"
 import sleepyCatGif from "./images/sleepy_cat_gif.gif"
 import "./About.scss"

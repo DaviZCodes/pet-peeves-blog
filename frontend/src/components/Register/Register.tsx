@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Register.scss"
@@ -15,7 +15,7 @@ function Register() {
         element.preventDefault();
 
         try {
-            await axios.post("https://pet-peeves-blog-backend.vercel.app", {
+            await axios.post("http://localhost:8019/register", {
                 username, password
             })
             navigate("/login");

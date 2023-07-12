@@ -4,7 +4,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import "./SinglePostPage.scss"
 import { UserContext } from "../UserContext/UserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface PostInfo {
     _id: string;
@@ -16,7 +16,6 @@ interface PostInfo {
   }
 
 function SinglePostPage() {
-    const navigate = useNavigate();
     const {userInfo} = useContext(UserContext);
     const {id} = useParams();
     const [postInfo, setPostInfo] = useState<PostInfo | null>(null);
@@ -25,7 +24,7 @@ function SinglePostPage() {
     useEffect(() => {
         const fetchSinglePost = async (): Promise<void> => {
             try {
-                const response = await axios.get(`https://pet-peeves-blog-backend.vercel.app/${id}`);
+                const response = await axios.get(`http://localhost:8019/posts/${id}`);
 
                 if (response.status === 200) {
                     setPostInfo(response.data);
@@ -59,7 +58,7 @@ function SinglePostPage() {
                 </p>
             </div>
             <div className="image">
-                <img src={`https://pet-peeves-blog-backend.vercel.app/${postInfo.cover}`} id="home-img" alt="Post Cover" />
+                <img src={`http://localhost:8019/${postInfo.cover}`} id="home-img" alt="Post Cover" />
             </div>
              <div className="post-content">
                 <p id="summary" dangerouslySetInnerHTML={{ __html: postInfo.content }}/>
