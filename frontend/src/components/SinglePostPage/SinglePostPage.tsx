@@ -4,7 +4,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import "./SinglePostPage.scss"
 import { UserContext } from "../UserContext/UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface PostInfo {
     _id: string;
@@ -16,6 +16,7 @@ interface PostInfo {
   }
 
 function SinglePostPage() {
+    const navigate = useNavigate();
     const {userInfo} = useContext(UserContext);
     const {id} = useParams();
     const [postInfo, setPostInfo] = useState<PostInfo | null>(null);
@@ -39,7 +40,7 @@ function SinglePostPage() {
     }, []);
 
     if (!postInfo) {
-        return "";
+        return null;
     }
 
     return (
