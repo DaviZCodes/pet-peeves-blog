@@ -1,7 +1,7 @@
 # pet-peeves-blog
 A blog for pet lovers who wish to share about their furry - *or raw chicken* - pets.
 
-> Created with React, Vite, Node, Express, MongoDB
+> Created with React, SASS, Vite, Node, Express, MongoDB
 
 ## How to get started?
 <ol>
