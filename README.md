@@ -7,7 +7,7 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 <ol>
   <li> Clone the repository </li>
   <li> Run the frontend - $ cd frontend && $ npm start </li>
-  <li> Run the backend ```$ cd backend && $ npm start``` </li>
+  <li> Run the backend $ cd backend && $ npm start </li>
 </ol>
 
 ## Now feel free to use the website!
@@ -15,6 +15,8 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
   <li> Register an account </li>
   <li> Login with your new account </li>
   <li> Create a post </li>
+  <li> View your profile </li>
+  <li> Edit or delete your posts </li>
   <li> Enjoy! </li>
 </ul>
 
@@ -26,6 +28,7 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 ### Technical features 
 <ul>
   <li> Passwords are 64 characters/numbers long, hashed with random text/hex/numbers - nearly impossible to trace back</li>
+  <li> Built with REST APIs </li>
 </ul>
 
 
