@@ -69,8 +69,9 @@ function Home() {
                     author={post.author}
                 />
                 ))}   
-
-                    <h2>The 3 posts below are frontend only:</h2>
+                    {/*     
+                    Hardcoded posts
+                    
                     <div className="post-home">
                     <div className="image">
                         <img src = {funnyDog} id = "home-img"></img>
@@ -113,7 +114,7 @@ function Home() {
                         </p>
                         <p id = "summary">Hey! I am a millionaire from Dubai. I have bought a giant aquarium. I was just wondering if sharks like to be pet like dogs?</p>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         </div>
