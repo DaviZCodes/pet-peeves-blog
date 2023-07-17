@@ -62,7 +62,7 @@ function NavBar() {
     if (showLoginNotification) {
       loginNotificationTime = setTimeout(() => {
         setShowLoginNotification(false);
-      }, 25000)
+      }, 2500)
     }
 
     if (showLogoutNotification) {
