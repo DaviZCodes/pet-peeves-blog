@@ -21,9 +21,6 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 </ul>
 
 ### Sneak peek
-<video width="320" height="240" controls>
-  <source src="https://i.imgur.com/rwQAhxZ.mp4" type="video/mp4">
-</video>
 ![Home](https://i.imgur.com/lOTdTw0.png)
 ![Single Page](https://i.imgur.com/DFM08ue.png)
 ![Create a post](https://i.imgur.com/tdmcStI.png) 
