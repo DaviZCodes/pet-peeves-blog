@@ -29,6 +29,7 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 ### Technical features 
 <ul>
   <li> Passwords are 64 characters/numbers long, hashed with random text/hex/numbers - nearly impossible to trace back</li>
+  <li> DOMPurify to sanitize set innerHTML</li>
 </ul>
 
 
