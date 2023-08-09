@@ -35,6 +35,9 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 
 ### Image credits:
 <ul>
+  <li> xing xing Home Page - https://www.caixinglobal.com/2022-10-14/gallery-one-armed-monkey-enraptures-chinas-internet-101951903.html</li>
+  <li> Kevin Home Page - https://www.youtube.com/watch?v=CNvkOuuUWoc&t</li>
+  <li> Dog Whisperer Home Page - https://www.businessinsider.com/cesar-millan-covering-up-dogs-attack-on-queen-latifahs-dog-2021-9</li>
   <li> Dog Home Page - https://redbeardedmarketing.com/wp-content/uploads/2021/04/funny-dogs.png</li>
   <li> Parrot Home Page - https://en.wikipedia.org/wiki/Companion_parrot </li>
   <li> Shark Home Page - https://www.discoverwildlife.com/animal-facts/fish/is-there-really-no-such-thing-as-a-fish/</li>
