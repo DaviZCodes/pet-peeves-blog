@@ -22,7 +22,7 @@ A blog for pet lovers who wish to share about their furry - *or raw chicken* - p
 
 ### Sneak peek
 
-https://github.com/DaviZCodes/pet-peeves-blog/assets/52458432/3fbacb62-8148-4f05-b6df-2eea9765cb7c
+https://github.com/DaviZCodes/pet-peeves-blog/assets/52458432/3e80409a-e512-4715-ae18-5308ce6c6046
 
 ![Home](https://i.imgur.com/lOTdTw0.png)
 ![Single Page](https://i.imgur.com/DFM08ue.png)
