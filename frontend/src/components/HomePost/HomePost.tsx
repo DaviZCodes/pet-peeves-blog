@@ -55,7 +55,7 @@ const HomePost: React.FC<HomePostProps> = ({
             __html: DOMPurify.sanitize(contentToShow),
           }}
         />
-        {content.length > 600 && <p id="read-more"> Read more</p>}
+        {content.length > 306 && <p id="read-more"> Read more</p>}
       </div>
     </div>
   );
