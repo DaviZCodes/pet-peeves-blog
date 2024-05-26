@@ -30,7 +30,7 @@ https://github.com/DaviZCodes/pet-peeves-blog/assets/52458432/3e80409a-e512-4715
 
 ### Security features 
 <ul>
-  <li> Passwords are 64 characters/numbers long, hashed with random text/hex/numbers - nearly impossible to trace back</li>
+  <li> Passwords are not directly saved into the database. They are uni-directionally transformed to 64 characters/numbers long, hashed with random text/hex/numbers - nearly impossible to trace back</li>
   <li> DOMPurify to sanitize set innerHTML - prevent malicious code </li>
 </ul>
 
